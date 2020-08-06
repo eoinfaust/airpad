@@ -19,10 +19,19 @@ body {
     width: 50%;
 }
 
-.main {
+.mainsign {
     background-color: #FFFFFF;
     width: 400px;
-    height: 450px;
+    height: 455px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.mainreg {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 665px;
     margin: 7em auto;
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
@@ -30,8 +39,8 @@ body {
 
 .about {
     background-color: #FFFFFF;
-    width: 1000px;
-    height: 450px;
+    width: 1200px;
+    height: 1350px;
     margin: 7em auto;
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
@@ -50,7 +59,6 @@ body {
     outline: none;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, 0.02);
-    margin-bottom: 50px;
     margin-left: 46px;
     text-align: center;
     margin-bottom: 27px;
@@ -86,7 +94,7 @@ form.form1 {
     outline: none;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, 0.02);
-    margin-bottom: 40px;
+    margin-bottom: 27px;
     margin-left: 46px;
     text-align: center;
     font-family: -apple-system, 
@@ -104,7 +112,7 @@ form.form1 {
     border: 2px solid rgba(0, 0, 0, 0.18) !important;  
 }
 
-.submit {
+.signin {
     cursor: pointer;
     border-radius: 5em;
     color: #fff;
@@ -125,12 +133,13 @@ form.form1 {
                 sans-serif;
     margin-left: 35%;
     font-size: 13px;
+    font-weight: 700;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
     opacity: 0.7;
     transition: 0.3s;
 }
 
-.create{
+.register{
     cursor: pointer;
     border-radius: 5em;
     color: #fff;
@@ -149,8 +158,10 @@ form.form1 {
                 Cantarell, 
                 "Helvetica Neue", 
                 sans-serif;
-    margin-left: 28.3%;
+    margin-left: 35%;
+    margin-top: 50px;
     font-size: 13px;
+    font-weight: 700;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
     opacity: 0.7;
     transition: 0.3s;
@@ -171,15 +182,15 @@ a {
 .links {
     cursor: pointer;
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: darkgray;
+    color: black;
     padding-top: 15px;
     display: inline;
     transition: 0.3s;
 }
 
-.create:hover {opacity: 1}
+.signin:hover {opacity: 1}
 
-.submit:hover {opacity: 1}
+.register:hover {opacity: 1}
 
 .links:hover {color: #1593eb}
 
@@ -187,4 +198,63 @@ a {
     .main {
         border-radius: 0px;
     }
+}
+
+.tagline{
+    color: #1593eb;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.img1 {
+    float: left;
+    margin-right:45px;
+    margin-left:100px;
+}
+  
+.img2 {
+    float: right;
+    margin-right:100px;
+    margin-left:45px;
+}
+
+p.ex1 {
+    padding-top:20px;
+    margin-right: 100px;
+    color: darkgrey;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+p.ex2 {
+    padding-top:20px;
+    margin-left: 100px;
+    color: darkgrey;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.linkq {
+    cursor: pointer;
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: black;
+    padding-top: 15px;
+    display: inline;
+    transition: 0.3s;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.linkq:hover {color: #1593eb}
+
+.query{
+    color: darkgrey;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
