@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+  require 'header.php';
+  require 'db_key.php';
+?>
 <html lang="en" dir="ltr">
 <head>
 <link rel="stylesheet" href="main.css">
