@@ -1,4 +1,4 @@
-body {
+body{
     background-color: #FFFFFF;
     margin: 0px;
     font-family: -apple-system, 
@@ -12,94 +12,29 @@ body {
                 sans-serif;
 }
 
-.logo {
+.logo{
     padding-top: 50px;
+    padding-bottom: 30px;
     text-align: center;
-  }
-  .logo img {
+}
+
+.logo img{
     width: 50%;
 }
 
-.mainsign {
+.popup {
     background-color: #FFFFFF;
     width: 400px;
-    height: 463px;
     margin: 7em auto;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-
-.mainreg {
-    background-color: #FFFFFF;
-    width: 400px;
-    height: 685px;
-    margin: 7em auto;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-
-.abouthead {
-    background-color: #000000;
-    width: 100%;
-    margin:0px auto;
-    margin-top:0px;
-    margin-bottom:20px;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-
-.about {
-    background-color: #FFFFFF;
-    width: 1400px;
-    height: 245px;
-    margin:7em auto;
-    margin-top:0px;
-    margin-bottom:30px;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-
-.abouti {
-    background-color: #FFFFFF;
-    width: 1400px;
-    height:442px;
-    margin:7em auto;
-    margin-top:5px;
-    margin-bottom:5px;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-
-.un {
-    width: 76%;
-    color: rgb(38, 50, 56);
-    font-weight: 300;
-    font-size: 18px;
-    letter-spacing: 1px;
-    background: rgba(146, 145, 145, 0.04);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
-    margin-left: 46px;
-    text-align: center;
-    margin-bottom: 27px;
-    font-family: -apple-system, 
-                    BlinkMacSystemFont, 
-                    "Segoe UI", 
-                    Roboto, 
-                    Oxygen-Sans, 
-                    Ubuntu, 
-                    Cantarell, 
-                    "Helvetica Neue", 
-                    sans-serif;
-}
-
-form.form1 {
-    padding-top: 30px;
 }
 
 .footer{
     padding-top: 12px;
+    padding-bottom: 10px;
 }
 
-.pass {
+.formfill{
     width: 76%;
     color: rgb(38, 50, 56);
     font-weight: 300;
@@ -125,11 +60,11 @@ form.form1 {
                     sans-serif;
 }
 
-.un:focus, .pass:focus {
+.plain:focus, .pass:focus {
     border: 2px solid rgba(0, 0, 0, 0.18) !important;  
 }
 
-.signin {
+.button{
     cursor: pointer;
     color: #fff;
     background: #000000;
@@ -148,7 +83,12 @@ form.form1 {
                 Cantarell, 
                 "Helvetica Neue", 
                 sans-serif;
-    margin-left: 35%;
+    display: flex; 
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    margin-left:30%;
+    margin-right:30%;
     font-size: 18px;
     font-weight: 400;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -156,47 +96,27 @@ form.form1 {
     transition: 0.3s;
 }
 
-.register{
-    cursor: pointer;
-    color: #fff;
-    background: #000000;
-    border: 0;
-    border-radius:25px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    font-family: -apple-system, 
-                BlinkMacSystemFont, 
-                "Segoe UI", 
-                Roboto, 
-                Oxygen-Sans, 
-                Ubuntu, 
-                Cantarell, 
-                "Helvetica Neue", 
-                sans-serif;
-    margin-left: 35%;
-    margin-top: 50px;
-    font-size: 18px;
-    font-weight: 400;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-    opacity: 0.6;
-    transition: 0.3s;
-}
+.button:hover{opacity: 1}
 
-a {
+a{
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
     color: darkgrey;
     transition: none;
     display: inline;
+    font-size:22px;
+    font-weight:300;
 }
 
-.center {
-    text-align: center;
-    border: 3px solid green;
-  }
+.small{
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: darkgrey;
+    transition: none;
+    display: inline;
+    font-size:16px;
+    font-weight:400;
+}
 
-.links {
+.link{
     cursor: pointer;
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
     color: black;
@@ -205,28 +125,33 @@ a {
     transition: 0.3s;
 }
 
-.signin:hover {opacity: 1}
+.link:hover {color: #1593eb}
 
-.register:hover {opacity: 1}
-
-.links:hover {color: #1593eb}
-
-@media (max-width: 600px) {
-    .main {
-        border-radius: 0px;
-    }
+.abouthead {
+    background-color: white;
+    width: 100%;
+    margin:0px auto;
+    margin-top:0px;
+    margin-bottom:20px;
+    padding-bottom:20px;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
 
-.tagline{
-    color: white;
-    font-size: 20px;
-    font-weight: 300;
+.about{
+    background-color: #FFFFFF;
+    width: 1400px;
+    padding-top:10px;
+    margin:7em auto;
+    margin-top:0px;
+    margin-bottom:40px;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
 
 .img1 {
     float: left;
     margin-right:45px;
     margin-left:100px;
+    margin-top:0;
 }
   
 .img2 {
@@ -244,7 +169,6 @@ a {
 
 p.ex1 {
     padding-top:20px;
-    margin-top:0;
     margin-right: 100px;
     color: darkgrey;
     font-size: 22px;
@@ -254,25 +178,6 @@ p.ex1 {
 p.ex2 {
     padding-top:20px;
     margin-left: 100px;
-    color: darkgrey;
-    font-size: 22px;
-    font-weight: 300;
-}
-
-.linkq {
-    cursor: pointer;
-    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: black;
-    padding-top: 15px;
-    display: inline;
-    transition: 0.3s;
-    font-size: 22px;
-    font-weight: 300;
-}
-
-.linkq:hover {color: #1593eb}
-
-.query{
     color: darkgrey;
     font-size: 22px;
     font-weight: 300;
