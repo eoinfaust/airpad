@@ -60,8 +60,13 @@ body{
                     sans-serif;
 }
 
-.plain:focus, .pass:focus {
+.formfill:focus {
     border: 2px solid rgba(0, 0, 0, 0.18) !important;  
+}
+
+.error{
+    color:red;
+    text-align: center;
 }
 
 .button{
@@ -164,7 +169,7 @@ a{
 .img3 {
     float: left;
     margin-right:45px;
-    margin-left:180px;
+    margin-left:220px;
 }
 
 p.ex1 {
