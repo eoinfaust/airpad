@@ -14,8 +14,8 @@
 <html>
 	<head>
 		<title>airpad | My Dashboard</title>
-		<link rel="stylesheet" href="main.css?version=3">
-		<link rel="stylesheet" href="index.css?version=1">
+		<link rel="stylesheet" href="main.css?version=4">
+		<link rel="stylesheet" href="index.css?version=2">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/registration.js"></script>
@@ -60,6 +60,7 @@
 			<div class="devicedropdown" >
 				<button class="devicedropbtn">select device <i class="fa fa-chevron-down"></i></button>
 				<div class="devicedropdown-content">
+				
 				</div>
 			</div>
 			<a>&nbsp;or&ensp;&ensp;</a>

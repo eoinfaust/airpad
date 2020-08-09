@@ -7,13 +7,13 @@
     cursor: pointer;
     margin-top: 20px;
     margin-bottom:0px;
-    margin-right:180px;
     transition: 0.15s;
 }
 
 .dropdown{
     position: relative;
     display: block;
+    margin-right:180px;
 }
 
 .dropdown-content {
@@ -26,7 +26,7 @@
     min-width: 690px;
     z-index: 1;
     margin-top:22px;
-    margin-right:235px;
+    margin-right:65px;
     margin-left:5%;
     padding-top:20px;
     padding-bottom:20px;
@@ -175,4 +175,20 @@
     color: red;
     text-decoration: none;
     cursor: pointer;
+}
+
+.reportg{
+    color: green;
+    padding-bottom: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.reportb{
+    color: orange;
+    padding-bottom: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
 }
