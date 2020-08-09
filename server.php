@@ -6,7 +6,7 @@ $deviceid = "";
 $devicename   = "";
 $report = "";
 $errors = array(); 
-$db = mysqli_connect('localhost', 'root', '', 'users');
+$db = mysqli_connect('localhost', 'root', '', 'airpad');
 
 if (isset($_POST['new_device'])) {
     $username = $_SESSION['username'];
@@ -25,99 +25,29 @@ if (isset($_POST['new_device'])) {
         array_push($errors, "Device name is required"); 
     } else if ($namelen){ 
         array_push($errors, "Device name must contain 16 or fewer characters"); 
-    }else if (!ctype_alnum($devicename)){ 
-        array_push($errors, "Device name must be alphanumeric"); 
     }
-    $id_check_query = "SELECT * FROM users WHERE device0='$deviceid' OR device1='$deviceid' OR device2='$deviceid' OR device3='$deviceid' OR device4='$deviceid' LIMIT 1";
-    $result = mysqli_query($db, $id_check_query);
-    $id = mysqli_fetch_assoc($result);
-    if ($id && ($devicename !== '') ){
+    $stmt = $db->prepare("SELECT * FROM devices WHERE deviceid=? LIMIT 1");
+    $stmt->bind_param("s", $deviceid);
+    $stmt->execute();
+    $result = $stmt -> get_result();
+    $existdev = $result->fetch_assoc();
+    $stmt->close();
+    if ($existdev && ($devicename !== '') ){
             array_push($errors, "Device already registered");
-    }else{
-        $sql ="SELECT * FROM users WHERE (username ='$username' AND device0 IS NULL OR device0 = '') OR (username ='$username' AND device1 IS NULL OR device1 = '') OR (username ='$username' AND device2 IS NULL OR device2 = '') OR (username ='$username' AND device3 IS NULL OR device3 = '') OR (username ='$username' AND device4 IS NULL OR device4 = '')";
-        $result = mysqli_query($db, $sql);
-        $exists = mysqli_fetch_assoc($result);
-        if(!$exists){
-            array_push($errors, "You have already registered 5 devices");
-        }
     }
-    if (count($errors) == 0){ 
-        $sql = "SELECT * FROM users WHERE (username='$username' AND device0 IS NULL OR device0 = '')";
-        $result = mysqli_query($db, $sql);
-        $isfree = mysqli_fetch_assoc($result);
-        if($isfree){
-            $sqlup = "UPDATE users SET device0=?, dname0=? WHERE username=?";
-            $stmt = $db->prepare($sqlup);
-            $stmt->bind_param('sss', $deviceid, $devicename, $username);
-            $stmt->execute();
-            if ($stmt->error){
-                header('Location:deviceadd.php?error=1');
-            } else {
-               header('Location:deviceadd.php?success=1');
-            }
-            $stmt->close();
-        }else{
-            $sql = "SELECT * FROM users WHERE (username='$username' AND device1 IS NULL OR device1 = '')";
-            $result = mysqli_query($db, $sql);
-            $exists = mysqli_fetch_assoc($result);
-            if($exists){
-                $sqlup = "UPDATE users SET device1=?, dname1=? WHERE username=?";
-                $stmt = $db->prepare($sqlup);
-                $stmt->bind_param('sss', $deviceid, $devicename, $username);
-                $stmt->execute();
-                if ($stmt->error){
-                    header('Location:deviceadd.php?error=1');
-                } else {
-                   header('Location:deviceadd.php?success=1');
-                }
-                $stmt->close();
-            }else{
-                $sql = "SELECT * FROM users WHERE (username='$username' AND device2 IS NULL OR device2 = '')";
-                $result = mysqli_query($db, $sql);
-                $exists = mysqli_fetch_assoc($result);
-                if($exists){
-                    $sqlup = "UPDATE users SET device2=?, dname2=? WHERE username=?";
-                    $stmt = $db->prepare($sqlup);
-                    $stmt->bind_param('sss', $deviceid, $devicename, $username);
-                    $stmt->execute();
-                    if ($stmt->error){
-                        header('Location:deviceadd.php?error=1');
-                    } else {
-                       header('Location:deviceadd.php?success=1');
-                    }
-                    $stmt->close();
-                }else{
-                    $sql = "SELECT * FROM users WHERE (username='$username' AND device3 IS NULL OR device3 = '')";
-                    $result = mysqli_query($db, $sql);
-                    $exists = mysqli_fetch_assoc($result);
-                    if($exists){
-                        $sqlup = "UPDATE users SET device3=?, dname3=? WHERE username=?";
-                        $stmt = $db->prepare($sqlup);
-                        $stmt->bind_param('sss', $deviceid, $devicename, $username);
-                        $stmt->execute();
-                        if ($stmt->error){
-                            header('Location:deviceadd.php?error=1');
-                        } else {
-                           header('Location:deviceadd.php?success=1');
-                        }
-                        $stmt->close();
-                    }else{
-                        $sqlup = "UPDATE users SET device4=?, dname4=? WHERE username=?";
-                        $stmt = $db->prepare($sqlup);
-                        $stmt->bind_param('sss', $deviceid, $devicename, $username);
-                        $stmt->execute();
-                        if ($stmt->error){
-                            header('Location:deviceadd.php?error=1');
-                        } else {
-                           header('Location:deviceadd.php?success=1');
-                        }
-                        $stmt->close();
-                    }
-                }
-            }
+    if (count($errors) == 0){
+        $stmt = $db->prepare("INSERT INTO `devices` (`deviceid`, `devicename`, `username`) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $deviceid, $devicename, $username);
+        $stmt->execute();
+        $stmt->close();
+        if ($stmt->error){
+            header('Location:deviceadd.php?error=1');
+        } else {
+           header('Location:deviceadd.php?success=1');
         }
+        $stmt->close();
     }
-} 
+}
 
 if (isset($_POST['reg_user'])){
     $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -149,26 +79,30 @@ if (isset($_POST['reg_user'])){
     if ($password1 != $password2){ 
         array_push($errors, "The two passwords do not match"); 
     }
-    $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
-    $result = mysqli_query($db, $user_check_query);
-    $user = mysqli_fetch_assoc($result);
-    if ($user){
-        if ($user['username'] === $username){
+    $stmt = $db->prepare("SELECT * FROM users WHERE username=? OR email=? LIMIT 1");
+    $stmt->bind_param("ss", $username, $email);
+    $stmt->execute();
+    $result = $stmt -> get_result();
+    $existacc = $result->fetch_assoc();
+    $stmt->close();
+    if ($existacc){
+        if ($existacc['username'] === $username){
         array_push($errors, "Username already exists");
         }
-        if ($user['email'] === $email){
+        if ($existacc['email'] === $email){
         array_push($errors, "Email already exists");
         }
     }
     if (count($errors) == 0){ 
-    $hash = password_hash($password1, PASSWORD_BCRYPT);
-  	$sql = "INSERT INTO `users` (`id`, `username`, `email`, `password`, `device0`, `device1`, `device2`, `device3`, `device4`, `dname0`, `dname1`, `dname2`, `dname3`, `dname4`) 
-            VALUES (NULL, '".$username."', '".$email."','".$hash."', '', '', '', '', '', '', '', '', '', '')";
-    mysqli_query($db, $sql);
-  	$_SESSION['username'] = $username;
-  	$_SESSION['success'];
-  	header('location: index.php');
-  }
+        $hash = password_hash($password1, PASSWORD_BCRYPT);
+        $stmt = $db->prepare("INSERT INTO `users` (`username`, `email`, `password`) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $hash);
+        $stmt->execute();
+        $stmt->close();
+        $_SESSION['username'] = $username;
+        $_SESSION['success'];
+        header('location: index.php');
+    }
 }
 
 if (isset($_POST['signin_user'])){
@@ -181,11 +115,14 @@ if (isset($_POST['signin_user'])){
         array_push($errors, "Password is required");
     }
     if (count($errors) == 0){
-        $sql = "SELECT `password` FROM users WHERE `username`='".$username."'";
-        $query = mysqli_query($db, $sql);
-        if (mysqli_num_rows($query) == 1){
-            $result = mysqli_fetch_assoc($query);
-            $resultstring = $result['password'];
+        $stmt = $db->prepare("SELECT * FROM users WHERE username=? OR email=? LIMIT 1");
+        $stmt->bind_param("ss", $username, $email);
+        $stmt->execute();
+        $result = $stmt -> get_result();
+        $existacc = $result->fetch_assoc();
+        $stmt->close();
+        if (mysqli_num_rows($result) == 1){
+            $resultstring = $existacc['password'];
             if(password_verify($password, $resultstring)){
                 $_SESSION['username'] = $username;
                 $_SESSION['success'];

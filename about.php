@@ -4,8 +4,7 @@ session_start();?>
 <html lang="en" dir="ltr">
   <head>
     <title>airpad | About</title>
-    <link rel="stylesheet" href="main.css?version=1">
-    <link rel="stylesheet" href="index.css?version=1">
+    <link rel="stylesheet" href="airpad.css?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
