@@ -90,10 +90,9 @@ body{
                 sans-serif;
     display: flex; 
     justify-content: center;
+    margin:7em auto;
     margin-top: 5px;
     margin-bottom: 40px;
-    margin-left:30%;
-    margin-right:30%;
     font-size: 18px;
     font-weight: 400;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -130,9 +129,31 @@ a{
     transition: 0.3s;
 }
 
+.linkbad{
+    cursor: pointer;
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: black;
+    padding-top: 15px;
+    display: inline;
+    transition: 0.3s;
+}
+
+.linkgood{
+    cursor: pointer;
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: black;
+    padding-top: 15px;
+    display: inline;
+    transition: 0.3s;
+}
+
 .link:hover {color: #1593eb}
 
-.abouthead {
+.linkbad:hover {color: red}
+
+.linkgood:hover {color: green}
+
+.head {
     background-color: white;
     width: 100%;
     margin:0px auto;
@@ -152,27 +173,29 @@ a{
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
 
-.img1 {
+.img1{
     float: left;
     margin-right:45px;
     margin-left:100px;
     margin-top:0;
 }
   
-.img2 {
+.img2{
     float: right;
     margin-right:100px;
     margin-left:45px;
     margin-top:0;
 }
 
-.img3 {
+.img3{
     float: left;
+    margin-top: 30px;
+    margin-bottom:8px;
     margin-right:45px;
-    margin-left:220px;
+    margin-left:180px;
 }
 
-p.ex1 {
+p.ex1{
     padding-top:20px;
     margin-right: 100px;
     color: darkgrey;
@@ -180,7 +203,7 @@ p.ex1 {
     font-weight: 300;
 }
 
-p.ex2 {
+p.ex2{
     padding-top:20px;
     margin-left: 100px;
     color: darkgrey;
@@ -188,7 +211,7 @@ p.ex2 {
     font-weight: 300;
 }
 
-.clearfix::after {
+.clearfix::after{
     content: "";
     clear: both;
     display: table;
