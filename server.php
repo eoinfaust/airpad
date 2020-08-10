@@ -12,7 +12,7 @@ if (isset($_POST['new_device'])) {
     $username = $_SESSION['username'];
     $deviceid = mysqli_real_escape_string($db, $_POST['deviceid']);
     $devicename = mysqli_real_escape_string($db, $_POST['devicename']);
-    $namelen = validNameLen($devicename);
+    $namelen = validIdLen($devicename);
     $idlen = validIdLen($deviceid);
     if (empty($deviceid)){ 
         array_push($errors, "Device ID is required");
@@ -24,7 +24,16 @@ if (isset($_POST['new_device'])) {
     if (empty($devicename)){ 
         array_push($errors, "Device name is required"); 
     } else if ($namelen){ 
-        array_push($errors, "Device name must contain 16 or fewer characters"); 
+        array_push($errors, "Device name must contain 10 or fewer characters"); 
+    }
+    $stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=? LIMIT 1");
+    $stmt->bind_param("ss", $username, $devicename);
+    $stmt->execute();
+    $result = $stmt -> get_result();
+    $existdev = $result->fetch_assoc();
+    $stmt->close();
+    if ($existdev){
+            array_push($errors, "You already have a device with that name");
     }
     $stmt = $db->prepare("SELECT * FROM devices WHERE deviceid=? LIMIT 1");
     $stmt->bind_param("s", $deviceid);
@@ -145,14 +154,6 @@ function validStrLen($str){
         return TRUE;
     }else{
         return FALSE;
-    }
-}
-function validNameLen($str){
-    $len = strlen($str);
-    if($len <= 16){
-        return FALSE;
-    }else{
-        return TRUE;
     }
 }
 function validIdLen($str){

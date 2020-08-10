@@ -52,18 +52,18 @@ session_start();?>
         <a class="link" href="https://www.amazon.com/" style="text-decoration: none;" >Buy <i class="fa fa-chevron-right" style="font-size:20px"></i></a>
         <br><br><a>Have a question or problem we can help you with?&ensp;</a>
         <a class="link" href="support.php" style="text-decoration: none";>Get in touch <i class="fa fa-chevron-right" style="font-size:20px"></i></a></p>
-        <p class = "footer" align="center" >
-          <?php  if (isset($_SESSION['username'])) : ?>
-          <a class="small linkbad" href="index.php?logout='1'" style="text-decoration: none;" >logout&ensp;</a>
-          <a class="small link" href="index.php" style="text-decoration: none;" >dashboard&ensp;</a>
-          <?php endif ?>
-          <?php  if (!isset($_SESSION['username'])) : ?>
-          <a class="small link" href="signin.php" style="text-decoration: none;" >sign in</a>
-          <a>&nbsp;|&nbsp;</a>
-          <a class="small link" href="register.php" style="text-decoration: none;" >register&ensp;</a>
-          <?php endif ?>
-          <a class="small link" href="support.php" style="text-decoration: none;" >support</a>
-          <a class="small" >&ensp;&ensp;&copy; 2020 airpad</a></p>
+				<p class = "footer" align="center" >
+				<?php  if (isset($_SESSION['username'])) : ?>
+					<a class="small linkbad" href="index.php?logout='1'"><i class="fa fa-sign-out"></i> logout&ensp;</a>
+				<?php endif ?>
+				<?php  if (!isset($_SESSION['username'])) : ?>
+					<a class="small link" href="signin.php"><i class="fa fa-sign-in"></i> sign in</a>
+					<a>&nbsp;|&nbsp;</a>
+					<a class="small link" href="register.php"><i class="fa fa-user-plus"></i> register&ensp;</a>
+				<?php endif ?>
+				<a class="small link" href="about.php"><i class="fa fa-book"></i> about&ensp;</a>
+       			<a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
+        		<a class="small" >&ensp;&ensp; &copy; 2020 airpad</a></p>
       </div>
     </div>
   </body>

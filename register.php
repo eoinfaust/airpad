@@ -16,20 +16,20 @@
   <body>
     <div class="popup">
       <div class="logo"><img src="airpad.png" alt="airpad"></div>
-        <form method="post" action="register.php">
+        <form method="post" action="register.php" align="center">
           <?php include('errors.php'); ?>
-          <input class="formfill" type="text" align="center" name="username" placeholder="username" value="<?php echo $username; ?>">
-          <input class="formfill" type="text" align="center" name="email" placeholder="email" value="<?php echo $email; ?>">
-          <input class="formfill" type="password" align="center" name="password1" placeholder="password">
-          <input class="formfill" type="password" align="center" name="password2" placeholder="confirm password">
-          <button class="button" name="reg_user" align="center">Register</button>
+          <input class="formfill" type="text" name="username" placeholder="username" value="<?php echo $username; ?>">
+          <input class="formfill" type="text" name="email" placeholder="email" value="<?php echo $email; ?>">
+          <input class="formfill" type="password" name="password1" placeholder="password">
+          <input class="formfill" type="password" name="password2" placeholder="confirm password">
+          <button class="button" name="reg_user">Register</button>
         </form>
         <p class = "footer" align="center" >
         <a>Already have an account?&ensp;</a>
-        <a class="link" href="signin.php" style="text-decoration: none;" >Sign in <i class="fa fa-chevron-right"></i></a></p>
+        <a class="link" href="signin.php">Sign in <i class="fa fa-chevron-right"></i></a></p>
         <p class = "footer" align="center" >
-        <a class="small link" href="about.php" style="text-decoration: none;" >about&ensp;</a>
-        <a class="small link" href="support.php" style="text-decoration: none;" >support</a>
+        <a class="small link" href="about.php"><i class="fa fa-book"></i> about&ensp;</a>
+        <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
         <a class="small" >&ensp;&ensp; &copy; 2020 airpad</a></p>
     </div>
   </body>

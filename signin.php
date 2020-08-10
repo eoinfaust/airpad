@@ -16,18 +16,18 @@
   <body>
     <div class="popup">
       <div class="logo"><img src="airpad.png" alt="airpad"></div>
-      <form method="post" action="signin.php">
+      <form method="post" action="signin.php" align="center">
         <?php include('errors.php'); ?>
-        <input class="formfill" type="text" align="center" name="username" placeholder="username">
-        <input class="formfill" type="password" align="center" name="password" placeholder="password">
+        <input class="formfill" type="text" name="username" placeholder="username">
+        <input class="formfill" type="password" name="password" placeholder="password">
         <button class="button" align="center" name="signin_user">Sign in</button>
       </form>
       <p class = "footer" align="center" >
       <a>Need an account?&ensp;</a>
-      <a class="link" href="register.php" style="text-decoration: none;" >Register now <i class="fa fa-chevron-right"></i></a></p>
-      <p class = "footer" align="center" >
-      <a class="small link" href="about.php" style="text-decoration: none;" >about&ensp;</a>
-      <a class="small link" href="support.php" style="text-decoration: none;" >support</a>
+      <a class="link" href="register.php">Register now <i class="fa fa-chevron-right"></i></a></p>
+      <p class = "footer" align="center">
+      <a class="small link" href="about.php"><i class="fa fa-book"></i> about&ensp;</a>
+      <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
       <a class="small" >&ensp;&ensp; &copy; 2020 airpad</a></p>
     </div>
   </body>
