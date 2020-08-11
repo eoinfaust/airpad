@@ -21,11 +21,11 @@
   <body>
     <div class="popup">
         <div class="logo"><a>Add a device to your account</a></div>
-        <form method="post" action="deviceadd.php">
+        <form method="post" action="deviceadd.php" align="center">
             <?php include('errors.php'); ?>
             <input class="formfill" type="text" align="center" name="deviceid" placeholder="device ID" value="<?php echo $deviceid; ?>">
             <input class="formfill" type="text" align="center" name="devicename" placeholder="your device name" value="<?php echo $devicename; ?>">
-            <button class="button" name="new_device" align="center">Submit</button>
+            <button class="button" name="new_device">Submit</button>
         </form>
           <?php if (!empty($_REQUEST['success'])) { ?>
             <p class="reportg" align="center">Device successfully registered</p>

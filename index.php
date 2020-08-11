@@ -11,12 +11,14 @@
   	}
 ?>
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
 <html>
 	<head>
 		<title>airpad | My Dashboard</title>
 		<link rel="stylesheet" href="airpad.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div class="head">
@@ -40,30 +42,31 @@
 				</div>
 			</div>
 		</div>
-		<div class="dashboard">
+		<div class="mainpage">
 			<a class="dashheading"><?=$_SESSION['username']?>'s dashboard</a>
 			<a href="deviceadd.php" class="deviceadd" style="text-decoration: none;">add device&nbsp;<i class="fa fa-plus"></i></button>
 			<a>&nbsp;</a>
-			<div class="custom-select">
+			<form method="post" action="process.php" class="custom-select">
 				<?php
 				$db = mysqli_connect('localhost', 'root', '', 'airpad');
-				$stmt = $db->prepare("SELECT devicename FROM devices WHERE username=?");
+				$stmt = $db->prepare("SELECT devicename FROM devices WHERE username=? ORDER BY devicename");
 				$stmt->bind_param("s", $_SESSION['username']);
 				$stmt->execute();
 				$result = $stmt -> get_result();
 				$stmt->close();
 				$init = '0';
 				$defaultselect = 'select device';
-				echo "<select id='devicename' name='devicename'>";
+				echo "<select id='devicechosen' onChange='myNewFunction(this);'>";
 				echo "<option value='".$init."'> ".$defaultselect."</option>"; 
 				while ($row = mysqli_fetch_array($result)) {
 					echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "</option>"; 
 				}
 				echo "</select>";
 				?>
-			</div>
-			<div>
-				<a class="namedevice">hello</a>
+				<div id="test"></div>
+			</form>
+			<div id="status">
+				<a class="namedevice" id="nameddevice"></a>
 				<a class="devicechange">&ensp;&ensp;settings&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&ensp;</a>
 				<a class="devicechange">rename&nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&ensp;</a>
 				<a class="devicedelete">delete&nbsp;<i class="fa fa-ban" aria-hidden="true"></i></a>
@@ -84,10 +87,11 @@
 			</div>
 		</div>
 		<script>
-			var x, i, j, l, ll, selElmnt, a, b, c;
-			x = document.getElementsByClassName("custom-select");
-			l = x.length;
-			for (i = 0; i < l; i++) {
+		$('#status').hide();
+		var x, i, j, l, ll, selElmnt, a, b, c;
+		x = document.getElementsByClassName("custom-select");
+		l = x.length;
+		for (i = 0; i < l; i++){
 			selElmnt = x[i].getElementsByTagName("select")[0];
 			ll = selElmnt.length;
 			a = document.createElement("DIV");
@@ -105,56 +109,62 @@
 					sl = s.length;
 					h = this.parentNode.previousSibling;
 					for (i = 0; i < sl; i++) {
-					if (s.options[i].innerHTML == this.innerHTML) {
-						s.selectedIndex = i;
-						h.innerHTML = this.innerHTML;
-						y = this.parentNode.getElementsByClassName("same-as-selected");
-						yl = y.length;
-						for (k = 0; k < yl; k++) {
-						y[k].removeAttribute("class");
+						if (s.options[i].innerHTML == this.innerHTML) {
+							s.selectedIndex = i;
+							h.innerHTML = this.innerHTML;
+							y = this.parentNode.getElementsByClassName("same-as-selected");
+							yl = y.length;
+							for (k = 0; k < yl; k++) {
+								y[k].removeAttribute("class");
+								}
+								this.setAttribute("class", "same-as-selected");
+								break;
+							}
+							//$("#status").load(window.location.href + " #status" );
+							$('#status').show();
 						}
-						this.setAttribute("class", "same-as-selected");
-						break;
-					}
-					}
-					h.click();
-				});
+						h.click();
+					});
 				b.appendChild(c);
 			}
 			x[i].appendChild(b);
-			a.addEventListener("click", function(e) {
+			a.addEventListener("click", function(e){
 				e.stopPropagation();
 				closeAllSelect(this);
 				this.nextSibling.classList.toggle("select-hide");
 				this.classList.toggle("select-arrow-active");
 				});
-			}
-			function closeAllSelect(elmnt) {
+		}
+		function closeAllSelect(elmnt){
 			var x, y, i, xl, yl, arrNo = [];
 			x = document.getElementsByClassName("select-items");
 			y = document.getElementsByClassName("select-selected");
 			xl = x.length;
 			yl = y.length;
-			for (i = 0; i < yl; i++) {
-				if (elmnt == y[i]) {
-				arrNo.push(i)
-				} else {
-				y[i].classList.remove("select-arrow-active");
+			for (i = 0; i < yl; i++){
+				if (elmnt == y[i]){
+					arrNo.push(i)
+				}else{
+					y[i].classList.remove("select-arrow-active");
 				}
 			}
-			for (i = 0; i < xl; i++) {
-				if (arrNo.indexOf(i)) {
-				x[i].classList.add("select-hide");
+			for (i = 0; i < xl; i++){
+				if (arrNo.indexOf(i)){
+					x[i].classList.add("select-hide");
 				}
 			}
+		}
+		document.addEventListener("click", closeAllSelect);
+		function up(){
+			if (document.getElementById("devicechosen").value != "0"){
+				var dop = document.getElementById("srt").value;
 			}
-			document.addEventListener("click", closeAllSelect);
-			function up() {
-				if (document.getElementById("devicename").value != "select device") {
-					var dop = document.getElementById("srt").value;
-				}
-				alert(dop);
-			}
+			alert(dop);
+		}
+		function myNewFunction(element){
+			var text = element.options[element.selectedIndex].text;
+			document.getElementById("test").innerHTML = text;
+		}
 		</script>
 	</body>
 </html>
