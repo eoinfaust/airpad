@@ -85,42 +85,34 @@ margin:none;margin-bottom:2%;
 padding-bottom:1%;
 box-shadow:0px 6px 18px 1px rgba(0, 0, 0, 0.14);
 }
-.head img{float:left;margin-top:2%;margin-bottom:1%;margin-left:10.5%;
-}
-.dashheading{
-margin-top:0.5%;margin-bottom:1%;margin-left:10.5%;
-font-size: 50px;font-weight:200;
-color:black;
+.head img{float:left;margin-top:2%;margin-bottom:1%;margin-left:10.5%;height:60px;
 }
 .mainpage{
 background-color:#FFFFFF;
-width:100%;
-padding-top:1%;padding-bottom:0%;
+width:79%;
+padding-top:1%;padding-bottom:0%;padding-left:10.5%;padding-right:10.5%;
 margin-top:0px;margin-bottom:1%;
 box-shadow:0px 6px 18px 1px rgba(0, 0, 0, 0.14);
 }
 .imgleft{
 float: left;
-margin-right:5%;margin-left:10.5%;margin-top:0;
+margin-right:5%;margin-top:0;
 width:28%;height:28%;transition:0.25s;
 }
 .imgright{
 float: right;
-margin-right:10.5%;margin-left:5%;margin-top:0;
+margin-left:5%;margin-top:0;
 width:28%;height:28%;transition:0.25s;
 }
 .textright{
 padding-top:0.8%;
-margin-right:10.5%;
 color: darkgrey;
 font-size:22px;font-weight:300;
 }
 .textleft{
 padding-top:0.8%;
-margin-left:10.5%;
 color: darkgrey;
-font-size:22px;font-weight:300;
-text-align:right;
+font-size:22px;font-weight:300;text-align:right;
 }
 .clearfix::after{
 content:"";
@@ -140,7 +132,7 @@ transition:0.15s;
 .dropdown{
 position:relative;
 display:block;
-margin-right:7%;
+margin-right:10.5%;
 }
 .dropdown-content {
 text-align:right;
@@ -154,205 +146,98 @@ margin-top:22px;margin-right:65px;margin-left:5%;
 padding-top:33%;padding-bottom:33%;padding-right:33%;
 }
 .dropdown-content a{
-color: black;
-text-decoration: none;
-font-size: 28px;font-weight: 300;
+color:black;
+text-decoration:none;
+font-size:28px;font-weight:300;
 padding-left:2%;padding-right:2%;
 }
 .dropdown:hover .dropdown-content{display: block;}
 .dropdown:hover .dropbtn{
-background-color: white;
-font-size: 48px;
+background-color:white;
+font-size:48px;
 }
-
-.devicedropbtn{
-background-color: white;
-color: black;
-border: 0;
-cursor: pointer;
-margin-top: 10px;
-margin-bottom:0px;
-transition: 0.3s;
-}
-
-.devicedropdown{
-position: relative;
-display: inline-block;
-margin-left:360px;
-}
-
-.devicedropdown-content {
-text-align: center;
-display: none;
-position: absolute;
-right: 0;
-background-color: #f9f9f9;
-min-width: 30px;
-z-index: 1;
-margin-right:180px;
-overflow-y: hidden;
-}
-
-.devicedropdown-content a{
-color: black;
-padding-top:0px;
-text-decoration: none;
-display: block;
-margin:10px;
-font-size: 24px;
-font-weight: 300;
-}
-
-.devicedropdown:hover .devicedropdown-content{
-display: block;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
 .deviceadd{
 background-color: white;
-color: black;
-font-size: 32px;
-font-weight: 300;
-border: none;
-cursor: pointer;
-margin-top: 10px;
-margin-bottom:0px;
-transition: 0.3s;
-padding:10px;
-margin-left: 23%;
+color: darkgrey;
+font-size:32px;font-weight:300;
+border:none;
+cursor:pointer;
+margin-top:0.5%;margin-bottom:0px;
+transition:0.3s;
+padding:0.4%;
 }
-
-.deviceadd:hover{
-color: green;
+.deviceadd:hover{color: green;}
+.custom-select{
+width:6.5em;
+display:inline-block;
+position:relative;
+padding-top:0.25%;padding-bottom:0px;
+font-size:32px;font-weight:300;
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
 }
-
+.custom-select select{display:none;}
+.select-selected {background-color:white;}
+.select-selected:hover{color: #1593eb;}
+.select-selected:after {
+position:absolute;
+content:'\f078';
+font:normal normal normal 17px/1 FontAwesome;
+font-size:32px;font-weight:300;
+width:0;height:0;right:40px;
+border:4px solid transparent;
+border-color:transparent transparent transparent transparent;
+}
+.select-selected.select-arrow-active:after{border-color:transparent transparent #FFFFFF transparent;}
+.select-items div,.select-selected{
+color:black;
+padding-bottom:4%;
+cursor:pointer;
+}
+.select-items{
+position:absolute;
+background-color:white;
+top:100%;left:0;right:0;
+z-index:99;width:6.5em;
+}
+.select-hide{display: none;}
+select::-ms-expand{display:none;}
+.select-items div:hover, .same-as-selected{background-color:rgba(0, 0, 0, 0.1);color:#1593eb;}
 .reportg{
-color: green;
-padding-bottom: 20px;
-font-size: 20px;
-font-weight: 300;
-text-align: center;
+color:green;
+padding-bottom:1%;
+font-size:20px;font-weight:300;
+text-align:center;
 }
-
 .reportb{
 color: orange;
-padding-bottom: 20px;
-font-size: 20px;
-font-weight: 300;
-text-align: center;
+padding-bottom:1%;
+font-size:20px;font-weight:300;
+text-align:center;
 }
-
-.custom-select {
-width:8em;
-display:inline-block;
-position: relative;
-padding-right:0px;
-padding-top:10px;
-padding-bottom:0px;
-font-size: 32px;
-font-weight: 300;
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+.deviceinfo{
+display:inline;
+margin-left:37.15%;
 }
-
-.custom-select select {
-display: none;
-}
-
-.select-selected {
-background-color: white;
-}
-
-.select-selected:hover{
-    color: #1593eb;
-}
-
-.select-selected:after {
-position: absolute;
-content: '\f078';
-font: normal normal normal 17px/1 FontAwesome;
-font-size: 32px;
-font-weight: 300;
-top: 14px;
-right: 50px;
-width: 0;
-height: 0;
-border: 6px solid transparent;
-border-color: transparent transparent transparent transparent;
-}
-
-.select-selected.select-arrow-active:after {
-border-color: transparent transparent #fff transparent;
-}
-
-.select-items div,.select-selected {
-color: black;
-padding: 8px 16px;
-cursor: pointer;
-}
-
-.select-items {
-position: absolute;
-background-color: white;
-top: 100%;
-left: 0;
-right: 0;
-z-index: 99;
-width:7.5em;
-}
-
-.select-hide {
-display: none;
-}
-
-select::-ms-expand {
-display: none;
-}
-
-.select-items div:hover, .same-as-selected {
-background-color: rgba(0, 0, 0, 0.1);
-color:#1593eb;
-}
-
-.namedevice{
-display:inline-block;
-margin-left:10.5%;
-font-weight:500;
-font-size:32px;
-padding-top:5px;
-color:black;
-}
-
 .devicechange{
-background-color: white;
+background-color:white;
 display:inline-block;
-color: darkgrey;
-font-size: 28px;
-font-weight: 300;
-cursor: pointer;
-transition: 0.3s;
-padding-top:5px;
+color:darkgrey;
+font-size:28px;font-weight:300;
+cursor:pointer;
+transition:0.3s;
 }
-    
-.devicechange:hover{
-color: #1593eb;
-}
-
+.devicechange:hover{color: #1593eb;}
 .devicedelete{
-background-color: white;
-display:inline-block;
-color: darkgrey;
-font-size: 28px;
-font-weight: 300;
-cursor: pointer;
-transition: 0.3s;
-padding-top:5px;
-}
-    
-.devicedelete:hover{
-color: red;
-}
+background-color:white;
+display:inline;
+color:darkgrey;
+font-size:28px;font-weight:300;
+cursor:pointer;
+transition:0.3s;
+} 
+.devicedelete:hover{color: red;}

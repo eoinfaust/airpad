@@ -11,7 +11,7 @@ session_start();?>
   <body>
     <div class="head">
       <div class="clearfix">
-        <img src="airpad.png" alt="airpad" height="60">
+        <img src="airpad.png" alt="airpad">
         <div class="dropdown" style="float:right;">
           <button class="dropbtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
           <div class="dropdown-content">

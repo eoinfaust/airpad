@@ -15,9 +15,9 @@
 <html>
 	<head>
 		<title>airpad | My Dashboard</title>
-		<link rel="stylesheet" href="airpad.css?version=1">
+		<link rel="stylesheet" href="airpad.css?version=7">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
@@ -43,10 +43,7 @@
 			</div>
 		</div>
 		<div class="mainpage">
-			<a class="dashheading"><?=$_SESSION['username']?>'s dashboard</a>
-			<a href="deviceadd.php" class="deviceadd" style="text-decoration: none;">add device&nbsp;<i class="fa fa-plus"></i></button>
-			<a>&nbsp;</a>
-			<form method="post" action="process.php" class="custom-select">
+			<form method="post" class="custom-select">
 				<?php
 				$db = mysqli_connect('localhost', 'root', '', 'airpad');
 				$stmt = $db->prepare("SELECT devicename FROM devices WHERE username=? ORDER BY devicename");
@@ -55,19 +52,18 @@
 				$result = $stmt -> get_result();
 				$stmt->close();
 				$init = '0';
-				$defaultselect = 'select device';
-				echo "<select id='devicechosen' onChange='myNewFunction(this);'>";
-				echo "<option value='".$init."'> ".$defaultselect."</option>"; 
+				$defaultselect = 'my devices';
+				echo "<select id='devicechosen' onselect='getdevname()'>";
+				echo "<option value='".$init."'> ".$defaultselect." </option>"; 
 				while ($row = mysqli_fetch_array($result)) {
-					echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "</option>"; 
+					echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 
 				}
 				echo "</select>";
 				?>
-				<div id="test"></div>
 			</form>
-			<div id="status">
-				<a class="namedevice" id="nameddevice"></a>
-				<a class="devicechange">&ensp;&ensp;settings&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&ensp;</a>
+			<a href="deviceadd.php" class="deviceadd" style="text-decoration:none;">add device&ensp;<i class="fa fa-plus"></i></a>
+			<div id="status" class="deviceinfo">
+				<a class="devicechange">&ensp;settings&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&ensp;</a>
 				<a class="devicechange">rename&nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&ensp;</a>
 				<a class="devicedelete">delete&nbsp;<i class="fa fa-ban" aria-hidden="true"></i></a>
 			</div>
@@ -164,6 +160,11 @@
 		function myNewFunction(element){
 			var text = element.options[element.selectedIndex].text;
 			document.getElementById("test").innerHTML = text;
+		}
+		function getdevname() {
+			var x = document.getElementById("devicechosen").value;
+			document.getElementById("demo").innerHTML = x;
+			//<button onclick="getdevname()">Try it</button>
 		}
 		</script>
 	</body>

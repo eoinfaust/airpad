@@ -68,7 +68,7 @@ if (isset($_POST['reg_user'])){
     if (empty($username)) { 
         array_push($errors, "Username is required"); 
     }else if ($useLen){ 
-        array_push($errors, "Username length must be 8-16 characters"); 
+        array_push($errors, "Username length must be 6-16 characters"); 
     }else if (!ctype_alnum($username)){ 
         array_push($errors, "Username must be alphanumeric"); 
     }
@@ -144,10 +144,9 @@ if (isset($_POST['signin_user'])){
         }
     }
 }
-
 function validStrLen($str){
     $len = strlen($str);
-    if($len < 8){
+    if($len < 6){
         return TRUE;
     }
     elseif($len > 16){

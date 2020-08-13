@@ -17,11 +17,11 @@
     <div class="popup">
       <div class="logo"><img src="airpad.png" alt="airpad"></div>
       <form method="post" action="signin.php" align="center">
-        <?php include('errors.php'); ?>
         <input class="formfill" type="text" name="username" placeholder="username">
         <input class="formfill" type="password" name="password" placeholder="password">
         <button class="button" align="center" name="signin_user">Sign in</button>
       </form>
+      <?php include('errors.php'); ?>
       <p class = "footer" align="center" >
       <a>Need an account?&ensp;</a>
       <a class="link" href="register.php">Register now <i class="fa fa-chevron-right"></i></a></p>
