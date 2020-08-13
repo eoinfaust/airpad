@@ -14,8 +14,8 @@
 <html lang="en" dir="ltr">
 <html>
 	<head>
-		<title>airpad | My Dashboard</title>
-		<link rel="stylesheet" href="airpad.css?version=7">
+		<title>eirpad | My Dashboard</title>
+		<link rel="stylesheet" href="eirpad.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,7 +23,7 @@
 	<body>
 		<div class="head">
 			<div class="clearfix">
-				<img class="img3" src="airpad.png" alt="airpad" height="60">
+				<img class="img3" src="eirpadtext.svg" alt="eirpad">
 				<div class="dropdown" style="float:right;">
 					<button class="dropbtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
 					<div class="dropdown-content">
@@ -45,7 +45,7 @@
 		<div class="mainpage">
 			<form method="post" class="custom-select">
 				<?php
-				$db = mysqli_connect('localhost', 'root', '', 'airpad');
+				$db = mysqli_connect('localhost', 'root', '', 'eirpad');
 				$stmt = $db->prepare("SELECT devicename FROM devices WHERE username=? ORDER BY devicename");
 				$stmt->bind_param("s", $_SESSION['username']);
 				$stmt->execute();
@@ -79,7 +79,7 @@
 				<?php endif ?>
 				<a class="small link" href="about.php"><i class="fa fa-book"></i> about&ensp;</a>
        			<a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
-        		<a class="small" >&ensp;&ensp; &copy; 2020 airpad</a></p>
+        		<a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
 			</div>
 		</div>
 		<script>

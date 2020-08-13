@@ -3,15 +3,15 @@ session_start();?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>airpad | About</title>
-    <link rel="stylesheet" href="airpad.css?version=1">
+    <title>eirpad | About</title>
+    <link rel="stylesheet" href="eirpad.css?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <div class="head">
       <div class="clearfix">
-        <img src="airpad.png" alt="airpad">
+        <img class="img3" src="eirpadtext.svg" alt="eirpad">
         <div class="dropdown" style="float:right;">
           <button class="dropbtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
           <div class="dropdown-content">
@@ -32,14 +32,14 @@ session_start();?>
     </div>
     <div class="mainpage";>
       <div class="clearfix">
-        <p class="textright"><img class="imgleft" src="https://via.placeholder.com/400" alt="airpad">
-          <br><br>The airpad is a privacy-oriented home monitoring device,<br> for short-term rental hosts and property managers.</p>
-          <p class="textright">The airpad's plug-and-play design contains temperature, humidity,<br> and noise sensors, for your peace of mind.</p>
+        <p class="textright"><img class="imgleft" src="https://via.placeholder.com/400" alt="eirpad">
+          <br><br>The eirpad is a privacy-oriented home monitoring device,<br> for short-term rental hosts and property managers.</p>
+          <p class="textright">The eirpad's plug-and-play design contains temperature, humidity,<br> and noise sensors, for your peace of mind.</p>
           <p class="textright">Its privacy-oriented design records noise levels,<br> with no intrusive microphones to pick up conversations.</p>
       </div>
       <div class="clearfix">
-        <p class="textleft"><br><br><img class="imgright" src="https://via.placeholder.com/400" alt="airpad">
-          <br><br>Register with our web app for real time updates through the cloud,<br> and view 7 days of data for all of your registered airpad devices.</p>
+        <p class="textleft"><br><br><img class="imgright" src="https://via.placeholder.com/400" alt="eirpad">
+          <br><br>Register with our web app for real time updates through the cloud,<br> and view 7 days of data for all of your registered eirpad devices.</p>
           <p class="textleft">Receive notifications at high humiditiy levels, upon tampering,<br>or when sustained noise levels exceed a desired threshold.</p>
           <p class="textleft">A comprehensive solution for noise and environmental monitoring,<br>and antisocial behaviour prevention, for privacy-conscious hosts.</p>
       </div>
@@ -59,7 +59,7 @@ session_start();?>
       <?php endif ?>
       <a class="small link" href="about.php"><i class="fa fa-book"></i> about&ensp;</a>
       <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
-      <a class="small" >&ensp;&ensp; &copy; 2020 airpad</a></p>
+      <a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
     </div>
   </body>
 </html>

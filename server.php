@@ -6,7 +6,7 @@ $deviceid = "";
 $devicename   = "";
 $report = "";
 $errors = array(); 
-$db = mysqli_connect('localhost', 'root', '', 'airpad');
+$db = mysqli_connect('localhost', 'root', '', 'eirpad');
 
 if (isset($_POST['new_device'])) {
     $username = $_SESSION['username'];

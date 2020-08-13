@@ -13,8 +13,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>airpad | Add device</title>
-    <link rel="stylesheet" href="airpad.css?version=1">
+    <title>eirpad | Add device</title>
+    <link rel="stylesheet" href="eirpad.css?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
@@ -40,7 +40,7 @@
         <?php endif ?>
         <a class="small link" href="about.php" style="text-decoration: none;" >about&ensp;</a>
         <a class="small link" href="support.php" style="text-decoration: none;" >support</a>
-        <a class="small" >&ensp;&ensp; &copy; 2020 airpad</a></p>
+        <a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
     </div>
   </body>
 </html>
