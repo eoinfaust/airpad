@@ -6,14 +6,15 @@ session_start();?>
     <title>eirpad | Home</title>
     <link rel="stylesheet" href="eirpad.css?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
     <link rel="manifest" href="/icon/site.webmanifest">
     <link rel="mask-icon" href="/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
   <div class="head">
@@ -27,12 +28,30 @@ session_start();?>
 						<a class="linkbad" href="account.php?logout='1'">logout</a>
 					<?php endif ?>
 					<?php  if (!isset($_SESSION['username'])) : ?>
-						<a class="link" href="signin.php">sign in</a>
+						<a class="link" id="signinmodBtn">sign in</a>
 						<a class="link" href="register.php">register</a>
 						<a class="link" href="support.php">support</a>
 					<?php endif ?>
 				</div>
 			</div>
+    </div>
+    <div id="signinModal" class="modal">
+      <div class="popup">
+      <span class="close">&times;</span>
+        <div class="logo"><img src="icon/eirpadtext.svg" alt="eirpad"></div>
+        <form method="post" id="signinform" align="center">
+          <p id=error1 class="reportb">Incorrect username/password</p>
+          <p id=error2 class="reportb">Username required</p>
+          <p id=error3 class="reportb">Password required</p>
+          <p id=error4 class="reportb">Username and password required</p>
+          <input class="formfill" type="text" name="username" id="username" placeholder="username">
+          <input class="formfill" type="password" name="password" id="password" placeholder="password">
+          <input type="submit" class="button" align="center" name="signin_user" id="signin_user" value="Sign in">
+        </form>
+        <p class = "footer" align="center" >
+        <a>Need an account?&ensp;</a>
+        <a class="link" href="register.php">Register now <i class="fa fa-chevron-right"></i></a></p>
+      </div>
     </div>
     <div class="mainpage";>
       <div class="clearfix">
@@ -65,5 +84,6 @@ session_start();?>
       <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
       <a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
     </div>
+    <script src="js/signin.js"></script>
   </body>
 </html>
