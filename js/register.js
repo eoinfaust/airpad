@@ -1,10 +1,8 @@
-$("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error5").hide();
-$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
+$("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error5").hide();$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
 $(document).ready(function(){
   $('#registerform').submit(function(e){
     $("#username1, #email, #password1, #password2").removeClass("inputerror");
-    $("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error5").hide();
-    $("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
+    $("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error5").hide();$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
     e.preventDefault();
     var data = $('#registerform').serializeArray();
     data.push({name: 'reg_user', value: '1'});

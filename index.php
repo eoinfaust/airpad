@@ -28,15 +28,13 @@ session_start();?>
 				<a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
 				<div class="headertext">
 					<?php  if (isset($_SESSION['username'])) : ?>
-						<a><?=$_SESSION['username']?></a>
-						<a class="link" href="account.php">my account</a>
-						<a class="link" href="support.php">support</a>
+						<a><?=$_SESSION['username']?>&ensp;</a>
+						<a class="link" href="account.php">my account&ensp;</a>
 						<a class="linkbad" href="account.php?logout='1'">logout</a>
 					<?php endif ?>
 					<?php  if (!isset($_SESSION['username'])) : ?>
-						<a class="link" id="signinmodBtn">sign in</a>
-						<a class="link" id="registermodBtn">register</a>
-						<a class="link" href="support.php">support</a>
+						<a class="headerlink" id="signinmodBtn">Sign in</a>
+						<a class="headerlink" id="registermodBtn">Register</a>
 					<?php endif ?>
 				</div>
 			</div>
@@ -48,7 +46,6 @@ session_start();?>
         <form method="post" id="signinform" align="center">
           <p id=error1 class="reportb">Incorrect username/password</p>
           <p id=error2 class="reportb">Username required</p>
-          <p id=error4 class="reportb">Username and password required</p>
           <div class="input-field">
             <input class="formfill" type="text" name="username" id="username" required>
             <label for="username">Username</label>
@@ -131,11 +128,6 @@ session_start();?>
       <p class = "footer" align="center" >
       <?php  if (isset($_SESSION['username'])) : ?>
         <a class="small linkbad" href="index.php?logout='1'"><i class="fa fa-sign-out"></i> logout&ensp;</a>
-      <?php endif ?>
-      <?php  if (!isset($_SESSION['username'])) : ?>
-        <a class="small link" href="signin.php"><i class="fa fa-sign-in"></i> sign in</a>
-        <a>&nbsp;|&nbsp;</a>
-        <a class="small link" href="register.php"><i class="fa fa-user-plus"></i> register&ensp;</a>
       <?php endif ?>
       <a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
       <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>

@@ -33,15 +33,13 @@
 				<a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
 				<div class="headertext">
 					<?php  if (isset($_SESSION['username'])) : ?>
-						<a><?=$_SESSION['username']?></a>
-						<a class="link" href="account.php">my account</a>
-						<a class="link" href="support.php">support</a>
+						<a><?=$_SESSION['username']?>&ensp;</a>
+						<a class="link" href="account.php">my account&ensp;</a>
 						<a class="linkbad" href="account.php?logout='1'">logout</a>
 					<?php endif ?>
 					<?php  if (!isset($_SESSION['username'])) : ?>
 						<a class="link" href="signin.php">sign in</a>
 						<a class="link" href="register.php">register</a>
-						<a class="link" href="support.php">support</a>
 					<?php endif ?>
 				</div>
 			</div>
@@ -65,7 +63,7 @@
 				echo "</select>";
 				?>
 			</form>
-			<a href="deviceadd.php" class="deviceadd" style="text-decoration:none;">add device&ensp;<i class="fa fa-plus"></i></a>
+			<a href="deviceadd.php" class="devicechange" style="text-decoration:none;">add device&ensp;<i class="fa fa-plus"></i></a>
 			<div id="status" class="deviceinfo">
 				<a class="devicechange">&ensp;settings&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&ensp;</a>
 				<a class="devicechange">rename&nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&ensp;</a>

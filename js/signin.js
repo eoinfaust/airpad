@@ -1,8 +1,8 @@
-$("#error1").hide();$("#error2").hide();$("#error3").hide();$("#error4").hide();
+$("#error1").hide();$("#error2").hide();$("#error3").hide();
 $(document).ready(function(){
   $('#signinform').submit(function(e){
     $("#username, #password").removeClass("inputerror");
-    $("#error1").hide();$("#error2").hide();$("#error3").hide();$("#error4").hide();
+    $("#error1").hide();$("#error2").hide();$("#error3").hide();
     e.preventDefault();
     var data = $('#signinform').serializeArray();
     data.push({name: 'signin_user', value: '1'});
@@ -21,16 +21,12 @@ $(document).ready(function(){
         if(arr[2]){
           $("#username, #password").addClass("inputerror");
           $("#error1").show();
-        }else if(arr[0] && !arr[1]){
+        }else if(arr[0]){
           $("#username").addClass("inputerror");
           $("#error2").show();
-        }else if(arr[1] && !arr[0]){
-          alert(arr)
+        }else if(arr[1]){
           $("#password").addClass("inputerror");
           $("#error3").show();
-        }else if(arr[0] && arr[1]){
-          $("#username, #password").addClass("inputerror");
-          $("#error4").show();
         }
       }
     });
