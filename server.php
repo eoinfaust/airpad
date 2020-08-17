@@ -59,14 +59,14 @@ if (isset($_POST['new_device'])) {
 }
 
 if (isset($_POST['reg_user'])){
-    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $username = mysqli_real_escape_string($db, $_POST['username1']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $password1 = mysqli_real_escape_string($db, $_POST['password1']);
     $password2 = mysqli_real_escape_string($db, $_POST['password2']);
     $useLen = (validStrLen($username));
     $passLen = (validStrLen($password1));
     $errorarray = array_fill(0, 11, 'false');
-    $nouser=$ulenbad=$userbad=$noemail=$bademail=$nopass=$pbleng=$nop2=$nomatch=$exuser=$exemail=$successful=false;
+    $nouser=$ulenbad=$userbad=$noemail=$bademail=$nopass=$pbleng=$nop2=$nomatch=$exuser=$exemail=false;
     if (empty($username)) { 
         array_push($errors, "Username is required");
         $nouser=true;
@@ -122,8 +122,7 @@ if (isset($_POST['reg_user'])){
         $stmt->execute();
         $stmt->close();
         $_SESSION['username'] = $username;
-        $_SESSION['success'];
-        $successful=true;
+        echo ('success');
     }else{
         $errs4js[0] = $nouser;
         $errs4js[1] = $ulenbad;
@@ -136,7 +135,6 @@ if (isset($_POST['reg_user'])){
         $errs4js[8] = $nomatch;
         $errs4js[9] = $exuser;
         $errs4js[10] = $exemail;
-        $errs4js[11] = $successful;
         echo json_encode($errs4js);
     }
 }
@@ -144,7 +142,7 @@ if (isset($_POST['reg_user'])){
 if (isset($_POST['signin_user'])){
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
-    $userempty=false;$passempty=false;
+    $userempty=$passempty=$badcombo=false;
     if (empty($username)){
         array_push($errors, "Username is required");
         $userempty=true;
@@ -164,25 +162,26 @@ if (isset($_POST['signin_user'])){
             $resultstring = $existacc['password'];
             if(password_verify($password, $resultstring)){
                 $_SESSION['username'] = $username;
-                $_SESSION['success'];
+                echo ('success');
             }else{
                 array_push($errors, "Incorrect username/password");
-                echo ('fail');
+                $errs4js[0] = $userempty;
+                $errs4js[1] = $passempty;
+                $errs4js[2] = true;
+                echo json_encode($errs4js);
             }
         }else{
-            echo ('fail');
             array_push($errors, "Incorrect username/password");
+            $errs4js[0] = $userempty;
+            $errs4js[1] = $passempty;
+            $errs4js[2] = true;
+            echo json_encode($errs4js);
         }
     }else{
-        if($passempty && !$userempty){
-            echo ('fillp');
-        }
-        if($userempty && !$passempty){
-            echo ('fillu');
-        }
-        if($userempty && $passempty){
-            echo ('fillup');
-        }
+        $errs4js[0] = $userempty;
+        $errs4js[1] = $passempty;
+        $errs4js[2] = $badcombo;
+        echo json_encode($errs4js);
     }
 }
 function validStrLen($str){
