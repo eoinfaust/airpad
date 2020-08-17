@@ -14,7 +14,13 @@ session_start();?>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("registerform").submit();
+       }
+     </script>
   </head>
   <body>
   <div class="head">
@@ -42,17 +48,20 @@ session_start();?>
         <form method="post" id="signinform" align="center">
           <p id=error1 class="reportb">Incorrect username/password</p>
           <p id=error2 class="reportb">Username required</p>
-          <p id=error3 class="reportb">Password required</p>
           <p id=error4 class="reportb">Username and password required</p>
           <div class="input-field">
             <input class="formfill" type="text" name="username" id="username" required>
             <label for="username">Username</label>
           </div>
+          <p id=error3 class="reportb">Password required</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password" id="password" required>
             <label for="password">Password</label>
           </div>
-          <input type="submit" class="button" align="center" name="signin_user" id="signin_user" value="Sign in">
+          <input type="submit" class="button" name="signin_user" id="signin_user" value="Sign in" style="float:left;">
+          <br>
+          <a class="forgotlink" id="#" align=left>Forgot password?</a>
+          <div class="clearfix"></div>
         </form>
         <p class = "footer" align="center" >
         <a>Need an account?&ensp;</a>
@@ -64,34 +73,37 @@ session_start();?>
         <span class="close"><i class="fa fa-times"></i></span>
         <div class="logo"><a href="index.php" ><img src="icon/eirpadtext.svg" alt="eirpad"></a></div>
         <form method="post" id="registerform" align="center">
+          <p id=error10 class="reportb">Username already exists</p>
           <p id=error19 class="reportb">Username is required</p>
           <p id=error29 class="reportb">Username length must be 8-16 characters</p>
           <p id=error39 class="reportb">Username must be alphanumeric</p>
-          <p id=error49 class="reportb">Email is required</p>
-          <p id=error5 class="reportb">Email address is invalid</p>
-          <p id=error6 class="reportb">Password is required</p>
-          <p id=error7 class="reportb">Password length must be 8-16 characters</p>
-          <p id=error8 class="reportb">Password confirmation is required</p>
-          <p id=error9 class="reportb">The two passwords do not match</p>
-          <p id=error10 class="reportb">Username already exists</p>
-          <p id=error11 class="reportb">Email already exists</p>
           <div class="input-field">
             <input class="formfill" type="text" name="username1" id="username1" required>
             <label for="username1">Username</label>
           </div>
+          <p id=error49 class="reportb">Email is required</p>
+          <p id=error5 class="reportb">Email address is invalid</p>
+          <p id=error11 class="reportb">Email already exists</p>
           <div class="input-field">
             <input class="formfill" type="text" name="email" id="email" required>
             <label for="email">Email</label>
           </div>
+          <p id=error6 class="reportb">Password is required</p>
+          <p id=error7 class="reportb">Password length must be 8-16 characters</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password1" id="password1" required>
             <label for="password1">Password</label>
           </div>
+          <p id=error8 class="reportb">Password confirmation is required</p>
+          <p id=error9 class="reportb">The two passwords do not match</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password2" id="password2" required>
             <label for="password2">Confirm password</label>
           </div>
-          <input type="submit" class="button" align="center" name="reg_user" id="reg_user" value="Register">
+          <input type="submit" class="button" name="reg_user" id="reg_user" value="Register" style="float:left;">
+          <div class="clearfix"></div>
+          <a class="tos" style="text-align:left;">By clicking "Register, you agree to our </a><a class="tos" href="terms">terms of service</a>
+          <a class="tos"> and </a><a class="tos" href="privacy">privacy policy</a><a>.</a>
         </form>
         <p class = "footer" align="center" >
         <a>Already have an account?&ensp;</a>

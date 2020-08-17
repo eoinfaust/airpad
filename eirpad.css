@@ -25,7 +25,7 @@ box-shadow:0px 12px 36px 2px rgba(0, 0, 0, 0.14);
 .footer{padding-top:10px;padding-bottom:10px;}
 .formfill{
 width:65%;
-color:rgb(38, 50, 56);
+color:#696969;
 font-weight:400;font-size:18px;
 letter-spacing:1px;
 padding:2% 4%;
@@ -72,7 +72,7 @@ border:0;
 padding-left:2em;padding-right:2em;padding-bottom:0.6em;padding-top:0.6em;
 display:flex; 
 justify-content:center;
-margin:7em auto;
+margin:15%;
 margin-top:0.75em;margin-bottom:2em;
 font-size:18px;font-weight:400;
 box-shadow:0px 12px 36px 2px rgba(0, 0, 0, 0.04);
@@ -231,9 +231,11 @@ text-align:center;
 }
 .reportb{
 color:red;
-padding-bottom:1%;
-font-size:20px;font-weight:400;
-text-align:center;
+padding:0%;
+margin:0%;
+margin-right:14%;
+font-size:16px;font-weight:400;
+text-align:right;
 }
 .deviceinfo{
 float:right;
@@ -298,4 +300,30 @@ user-select:none;
 color:red;
 text-decoration:none;
 cursor:pointer;
+}
+.forgotlink{
+cursor:pointer;
+color:#1593eb;
+transition:0.2s;
+text-decoration:none;
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+margin-right:10%;
+font-size:16px;
+}
+.forgotlink:hover{color:black;}
+.tos{
+color:black;
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+font-size:12px;
+margin-top:-50%;
 }
