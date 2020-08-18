@@ -72,7 +72,7 @@ session_start();?>
         <form method="post" id="registerform" align="center">
           <p id=error10 class="reportb">Username already exists</p>
           <p id=error19 class="reportb">Username is required</p>
-          <p id=error29 class="reportb">Username length must be 8-16 characters</p>
+          <p id=error29 class="reportb">Username must be 8-16 characters</p>
           <p id=error39 class="reportb">Username must be alphanumeric</p>
           <div class="input-field">
             <input class="formfill" type="text" name="username1" id="username1" required>
@@ -86,13 +86,13 @@ session_start();?>
             <label for="email">Email</label>
           </div>
           <p id=error6 class="reportb">Password is required</p>
-          <p id=error7 class="reportb">Password length must be 8-16 characters</p>
+          <p id=error7 class="reportb">Password must be 8-16 characters</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password1" id="password1" required>
             <label for="password1">Password</label>
           </div>
-          <p id=error8 class="reportb">Password confirmation is required</p>
-          <p id=error9 class="reportb">The two passwords do not match</p>
+          <p id=error8 class="reportb">Password confirmation required</p>
+          <p id=error9 class="reportb">The passwords don't match</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password2" id="password2" required>
             <label for="password2">Confirm password</label>
