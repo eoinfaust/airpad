@@ -42,7 +42,7 @@ session_start();?>
     <div id="signinModal" class="modal">
       <div class="popup">
         <span class="close"><i class="fa fa-times"></i></span>
-        <div class="logo"><a href="index.php" ><img src="icon/eirpadtext.svg" alt="eirpad"></a></div>
+        <div class="logo"><img src="icon/eirpadtext.svg" alt="eirpad"></div>
         <form method="post" id="signinform" align="center">
           <p id=error1 class="reportb">Incorrect username/password</p>
           <p id=error2 class="reportb">Username required</p>
@@ -60,7 +60,7 @@ session_start();?>
           <a class="forgotlink" id="#" align=left>Forgot password?</a>
           <div class="clearfix"></div>
         </form>
-        <p class = "footer" align="center" >
+        <p align="center" >
         <a>Need an account?&ensp;</a>
         <a class="link" id="registermodBtn1">Register now <i class="fa fa-chevron-right"></i></a></p>
       </div>
@@ -100,9 +100,10 @@ session_start();?>
           <input type="submit" class="button" name="reg_user" id="reg_user" value="Register" style="float:left;">
           <div class="clearfix"></div>
           <a class="tos" style="text-align:left;">By clicking "Register, you agree to our </a><a class="tos" href="terms">terms of service</a>
-          <a class="tos"> and </a><a class="tos" href="privacy">privacy policy</a><a>.</a>
+          <a class="tos"> and </a><a class="tos" href="privacy">privacy policy</a><a class="tos">.</a>
         </form>
-        <p class = "footer" align="center" >
+        <br>
+        <p align="center" >
         <a>Already have an account?&ensp;</a>
         <a class="link" id="signinmodBtn1">Sign in <i class="fa fa-chevron-right"></i></a></p>
       </div>
@@ -120,12 +121,13 @@ session_start();?>
           <p class="textleft">Receive notifications at high humidity levels, upon tampering, or when sustained noise levels exceed a desired threshold.</p>
           <p class="textleft">A comprehensive solution for noise and environmental monitoring, and antisocial behaviour prevention, for privacy-conscious hosts.</p>
       </div>
-      <p class = "footer" align="center" >
+      <p align="center" >
       <a><br>Available for purchase online.&ensp;</a>
       <a class="link" href="https://www.amazon.com/" style="text-decoration: none;" >Buy <i class="fa fa-chevron-right" style="font-size:20px"></i></a>
       <br><br><a>Have a question or problem we can help you with?&ensp;</a>
       <a class="link" href="support.php" style="text-decoration: none";>Get in touch <i class="fa fa-chevron-right" style="font-size:20px"></i></a></p>
-      <p class = "footer" align="center" >
+      <br>
+      <p align="center" >
       <?php  if (isset($_SESSION['username'])) : ?>
         <a class="small linkbad" href="index.php?logout='1'"><i class="fa fa-sign-out"></i> logout&ensp;</a>
       <?php endif ?>
