@@ -8,23 +8,23 @@ $report = "";
 $errors = array(); 
 $db = mysqli_connect('localhost', 'root', '', 'eirpad');
 
-if (isset($_POST['new_device'])) {
+if (isset($_POST['add_device'])) {
     $username = $_SESSION['username'];
     $deviceid = mysqli_real_escape_string($db, $_POST['deviceid']);
     $devicename = mysqli_real_escape_string($db, $_POST['devicename']);
     $namelen = validIdLen($devicename);
     $idlen = validIdLen($deviceid);
+    $didreq=$dnamereq=$dnamelen=$dnamex=$dalreg=$nodidex=false;
     if (empty($deviceid)){ 
         array_push($errors, "Device ID is required");
-    }else if (!ctype_alnum($deviceid)){ 
-        array_push($errors, "Device IDs must be alphanumeric"); 
-    }else if($idlen){
-        array_push($errors, "Device ID must contain 10 or fewer characters"); 
+        $didreq=true;
     }
     if (empty($devicename)){ 
-        array_push($errors, "Device name is required"); 
-    } else if ($namelen){ 
+        array_push($errors, "Device name is required");
+        $dnamerq=true;
+    }else if($namelen){ 
         array_push($errors, "Device name must contain 10 or fewer characters"); 
+        $dnamelen=true;
     }
     $stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=? LIMIT 1");
     $stmt->bind_param("ss", $username, $devicename);
@@ -33,7 +33,8 @@ if (isset($_POST['new_device'])) {
     $existdev = $result->fetch_assoc();
     $stmt->close();
     if ($existdev){
-            array_push($errors, "You already have a device with that name");
+        array_push($errors, "You already have a device with that name");
+        $dnamex=true;
     }
     $stmt = $db->prepare("SELECT * FROM devices WHERE deviceid=? LIMIT 1");
     $stmt->bind_param("s", $deviceid);
@@ -42,19 +43,33 @@ if (isset($_POST['new_device'])) {
     $existdev = $result->fetch_assoc();
     $stmt->close();
     if ($existdev && ($devicename !== '') ){
-            array_push($errors, "Device already registered");
+        array_push($errors, "Device already registered");
+        $dalreg=true;
+    }
+    $stmt = $db->prepare("SELECT * FROM deviceids WHERE deviceid=? LIMIT 1");
+    $stmt->bind_param("s", $deviceid);
+    $stmt->execute();
+    $result = $stmt -> get_result();
+    $existdev = $result->fetch_assoc();
+    $stmt->close();
+    if (!$existdev){
+        array_push($errors, "Device ID doesn't exist");
+        $nodidex=true;
     }
     if (count($errors) == 0){
         $stmt = $db->prepare("INSERT INTO `devices` (`deviceid`, `devicename`, `username`) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $deviceid, $devicename, $username);
         $stmt->execute();
         $stmt->close();
-        if ($stmt->error){
-            header('Location:deviceadd.php?error=1');
-        } else {
-           header('Location:deviceadd.php?success=1');
-        }
-        $stmt->close();
+        echo 'successdev';
+    }else{
+        $errs4js[0] = $didreq;
+        $errs4js[1] = $dnamereq;
+        $errs4js[2] = $dnamelen;
+        $errs4js[3] = $dnamex;
+        $errs4js[4] = $dalreg;
+        $errs4js[5] = $nodidex;
+        echo json_encode($errs4js);
     }
 }
 
@@ -65,7 +80,6 @@ if (isset($_POST['reg_user'])){
     $password2 = mysqli_real_escape_string($db, $_POST['password2']);
     $useLen = (validStrLen($username));
     $passLen = (validStrLen($password1));
-    $errorarray = array_fill(0, 11, 'false');
     $nouser=$ulenbad=$userbad=$noemail=$bademail=$nopass=$pbleng=$nop2=$nomatch=$exuser=$exemail=false;
     if (empty($username)) { 
         array_push($errors, "Username is required");

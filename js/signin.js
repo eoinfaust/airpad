@@ -1,8 +1,7 @@
-$("#error1").hide();$("#error2").hide();$("#error3").hide();
+clearmodal();
 $(document).ready(function(){
   $('#signinform').submit(function(e){
-    $("#username, #password").removeClass("inputerror");
-    $("#error1").hide();$("#error2").hide();$("#error3").hide();
+    clearmodal();
     e.preventDefault();
     var data = $('#signinform').serializeArray();
     data.push({name: 'signin_user', value: '1'});

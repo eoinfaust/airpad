@@ -41,7 +41,7 @@ window.onclick = function(event){
     }
 }
 function clearmodal(){
-    $("#error1").hide();$("#error2").hide();$("#error3").hide();$("#error4").hide();$("#error5").hide();$("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
-    $("#username, #password, #username1, #email, #password1, #password2").removeClass("inputerror");
-    $("#password1, #password2, #password, #username, #email, #username1").val("");
+    $("#error101").hide();$("#error102").hide();$("#error103").hide();$("#error104").hide();$("#error105").hide();$("#error106").hide();$("#error1").hide();$("#error2").hide();$("#error3").hide();$("#error4").hide();$("#error5").hide();$("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
+    $("#username, #password, #username1, #email, #password1, #password2, #devicename, #deviceid").removeClass("inputerror");
+    $("#password1, #password2, #password, #username, #email, #username1, #devicename, #deviceid").val("");
 }

@@ -15,12 +15,6 @@ session_start();?>
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-     <script>
-       function onSubmit(token) {
-         document.getElementById("registerform").submit();
-       }
-     </script>
   </head>
   <body>
   <div class="head">
@@ -137,6 +131,6 @@ session_start();?>
     </div>
     <script src="js/signin.js"></script>
     <script src="js/register.js"></script>
-    <script src="js/modals.js"></script>
+    <script src="js/modalindex.js"></script>
   </body>
 </html>

@@ -44,6 +44,29 @@
 				</div>
 			</div>
 		</div>
+		<div id="deviceaddModal" class="modal">
+			<div class="popup">
+				<span class="close"><i class="fa fa-times"></i></span>
+				<div class="logo"><a>Add a device to your account</a></div>
+				<form method="post" id="deviceaddform" align="center">
+					<p id=error101 class="reportb">Device ID required</p>
+					<p id=error105 class="reportb">Device already registered</p>
+					<p id=error106 class="reportb">That device ID doesn't exist</p>
+					<div class="input-field">
+						<input class="formfill" type="text" name="deviceid" id="deviceid" required>
+						<label for="deviceid">Device ID</label>
+					</div>
+					<p id=error102 class="reportb">Device name required</p>
+					<p id=error103 class="reportb">Max device name length is 10</p>
+					<p id=error104 class="reportb">Device name already exists</p>
+					<div class="input-field">
+						<input class="formfill" type="text" name="devicename" id="devicename" required>
+						<label for="devicename">Device name</label>
+					</div>
+					<input type="submit" class="button" name="add_device" id="add_device" value="Add device">
+				</form>
+			</div>
+		</div>
 		<div class="mainpage">
 			<form method="post" class="custom-select">
 				<?php
@@ -63,7 +86,7 @@
 				echo "</select>";
 				?>
 			</form>
-			<a href="deviceadd.php" class="devicechange" style="text-decoration:none;">add device&ensp;<i class="fa fa-plus"></i></a>
+			<a id="deviceaddBtn" class="devicechange">add device&ensp;<i class="fa fa-plus"></i></a>
 			<div id="status" class="deviceinfo">
 				<a class="devicechange">&ensp;settings&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&ensp;</a>
 				<a class="devicechange">rename&nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&ensp;</a>
@@ -82,6 +105,7 @@
 			<?php endif ?>
 			<a class="small">&ensp;&copy; 2020 eirpad</a></p>
 		</div>
-		<script type="text/javascript" src="js/dropdown.js"></script>
+		<script src="js/dropdown.js"></script>
+		<script src="js/deviceadd.js"></script>
 	</body>
 </html>
