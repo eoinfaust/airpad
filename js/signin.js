@@ -19,13 +19,16 @@ $(document).ready(function(){
         var arr = JSON.parse(data);
         if(arr[2]){
           $("#username, #password").addClass("inputerror");
-          $("#error1").show();
-        }else if(arr[0]){
-          $("#username").addClass("inputerror");
-          $("#error2").show();
-        }else if(arr[1]){
-          $("#password").addClass("inputerror");
-          $("#error3").show();
+          $("#error12").show();
+        }else{
+          if(arr[0]){
+            $("#username").addClass("inputerror");
+            $("#error13").show();
+          }
+          if(arr[1]){
+            $("#password").addClass("inputerror");
+            $("#error14").show();
+          }
         }
       }
     });

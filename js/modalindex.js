@@ -1,3 +1,8 @@
+
+function clearmodal(){
+    $("#error1").hide();$("#error2").hide();$("#error3").hide();$("#error4").hide();$("#error5").hide();$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();$("#error12").hide();$("#error13").hide();$("#error14").hide();$("#error15").hide();
+    $("#username, #password, #username1, #email, #password1, #password2").removeClass("inputerror");
+}
 var modalsig = document.getElementById("signinModal");
 var btnsig = document.getElementById("signinmodBtn");
 var spansig = document.getElementsByClassName("close")[0];
@@ -17,6 +22,7 @@ btnsig1.onclick = function(){
     modalsig.style.display="block";
 }
 btnreg.onclick = function(){
+    clearmodal();
     modalreg.style.display="block";
 }
 spanreg.onclick = function(){
@@ -24,6 +30,7 @@ spanreg.onclick = function(){
     clearmodal();
 }
 btnsig.onclick = function(){
+    clearmodal();
     modalsig.style.display="block";
 }
 spansig.onclick = function(){
@@ -39,9 +46,4 @@ window.onclick = function(event){
         modalsig.style.display="none";
         clearmodal();
     }
-}
-function clearmodal(){
-    $("#error101").hide();$("#error102").hide();$("#error103").hide();$("#error104").hide();$("#error105").hide();$("#error106").hide();$("#error1").hide();$("#error2").hide();$("#error3").hide();$("#error4").hide();$("#error5").hide();$("#error19").hide();$("#error29").hide();$("#error39").hide();$("#error49").hide();$("#error6").hide();$("#error7").hide();$("#error8").hide();$("#error9").hide();$("#error10").hide();$("#error11").hide();
-    $("#username, #password, #username1, #email, #password1, #password2, #devicename, #deviceid").removeClass("inputerror");
-    $("#password1, #password2, #password, #username, #email, #username1, #devicename, #deviceid").val("");
 }

@@ -38,13 +38,13 @@ session_start();?>
         <span class="close"><i class="fa fa-times"></i></span>
         <div class="logo"><img src="icon/eirpadtext.svg" alt="eirpad"></div>
         <form method="post" id="signinform" align="center">
-          <p id=error1 class="reportb">Incorrect username/password</p>
-          <p id=error2 class="reportb">Username required</p>
+          <p id=error12 class="reportb">Incorrect username/password</p>
+          <p id=error13 class="reportb">Username required</p>
           <div class="input-field">
             <input class="formfill" type="text" name="username" id="username" required>
             <label for="username">Username</label>
           </div>
-          <p id=error3 class="reportb">Password required</p>
+          <p id=error14 class="reportb">Password required</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password" id="password" required>
             <label for="password">Password</label>
@@ -64,15 +64,15 @@ session_start();?>
         <span class="close"><i class="fa fa-times"></i></span>
         <div class="logo"><a href="index.php" ><img src="icon/eirpadtext.svg" alt="eirpad"></a></div>
         <form method="post" id="registerform" align="center">
+          <p id=error1 class="reportb">Username is required</p>
+          <p id=error2 class="reportb">Username must be 8-16 characters</p>
+          <p id=error3 class="reportb">Username must be alphanumeric</p>
           <p id=error10 class="reportb">Username already exists</p>
-          <p id=error19 class="reportb">Username is required</p>
-          <p id=error29 class="reportb">Username must be 8-16 characters</p>
-          <p id=error39 class="reportb">Username must be alphanumeric</p>
           <div class="input-field">
             <input class="formfill" type="text" name="username1" id="username1" required>
             <label for="username1">Username</label>
           </div>
-          <p id=error49 class="reportb">Email is required</p>
+          <p id=error4 class="reportb">Email is required</p>
           <p id=error5 class="reportb">Email address is invalid</p>
           <p id=error11 class="reportb">Email already exists</p>
           <div class="input-field">
@@ -81,12 +81,12 @@ session_start();?>
           </div>
           <p id=error6 class="reportb">Password is required</p>
           <p id=error7 class="reportb">Password must be 8-16 characters</p>
+          <p id=error9 class="reportb">The passwords don't match</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password1" id="password1" required>
             <label for="password1">Password</label>
           </div>
           <p id=error8 class="reportb">Password confirmation required</p>
-          <p id=error9 class="reportb">The passwords don't match</p>
           <div class="input-field">
           <input class="formfill" type="password" name="password2" id="password2" required>
             <label for="password2">Confirm password</label>
@@ -129,8 +129,8 @@ session_start();?>
       <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
       <a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
     </div>
+    <script src="js/modalindex.js"></script>
     <script src="js/signin.js"></script>
     <script src="js/register.js"></script>
-    <script src="js/modalindex.js"></script>
   </body>
 </html>

@@ -1,25 +1,4 @@
-var modaladdev = document.getElementById("deviceaddModal");
-var btnaddev = document.getElementById("deviceaddBtn");
-var spanaddev = document.getElementsByClassName("close")[0];
-btnaddev.onclick = function(){
-  modaladdev.style.display="block";
-}
-spanaddev.onclick = function(){
-  modaladdev.style.display="none";
-  clearmodaldev();
-}
-window.onclick = function(event){
-  if(event.target == modaladdev){
-      modaladdev.style.display="none";
-      clearmodaldev();
-  }
-}
-function clearmodaldev(){
-  $("#error101").hide();$("#error102").hide();$("#error103").hide();$("#error104").hide();$("#error105").hide();$("#error106").hide();
-  $("#devicename, #deviceid").removeClass("inputerror");
-  $("#devicename, #deviceid").val("");
-}
-clearmodaldev()
+clearmodal()
 $(document).ready(function(){
   $('#deviceaddform').submit(function(e){
     $("#deviceid, #devicename").removeClass("inputerror");
@@ -34,7 +13,7 @@ $(document).ready(function(){
       cache: false
     });
     promise.then(function(data){
-      if(data === 'successdev'){
+      if(data === 'success'){
         window.location.href = 'account.php';
       }else{
         var arr = JSON.parse(data);

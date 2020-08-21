@@ -19,22 +19,24 @@ $(document).ready(function(){
             var ar = JSON.parse(data);
             if(ar[0]){
                 $("#username1").addClass("inputerror");
-                $("#error19").show();
-            }
-            if(ar[1]){
+                $("#error1").show();
+            }else if(ar[1]){
                 $("#username1").val("");
                 $("#username1").addClass("inputerror");
-                $("#error29").show();
-            }
-            if(ar[2]){
+                $("#error2").show();
+            }else if(ar[2]){
                 $("#username1").val("");
                 $("#username1").addClass("inputerror");
-                $("#error39").show();
+                $("#error3").show();
+            }else if(ar[9]){
+                $("#username1").val("");
+                $("#username1").addClass("inputerror");
+                $("#error10").show();
             } 
             if(ar[3]){
                 $("#email").val("");
                 $("#email").addClass("inputerror");
-                $("#error49").show();
+                $("#error4").show();
             } 
             if(ar[4]){
                 $("#email").val("");
@@ -56,11 +58,6 @@ $(document).ready(function(){
             if(ar[8]){
                 $("#password1, #password2").addClass("inputerror");
                 $("#error9").show();
-            } 
-            if(ar[9]){
-                $("#username1").val("");
-                $("#username1").addClass("inputerror");
-                $("#error10").show();
             } 
             if(ar[10]){
                 $("#email").val("");
