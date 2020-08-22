@@ -32,15 +32,9 @@
 			<div class="clearfix">
 				<a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
 				<div class="headertext">
-					<?php  if (isset($_SESSION['username'])) : ?>
-						<a><?=$_SESSION['username']?>&ensp;</a>
-						<a class="link" href="account.php">my account&ensp;</a>
-						<a class="linkbad" href="account.php?logout='1'">logout</a>
-					<?php endif ?>
-					<?php  if (!isset($_SESSION['username'])) : ?>
-						<a class="link" href="signin.php">sign in</a>
-						<a class="link" href="register.php">register</a>
-					<?php endif ?>
+					<a><?=$_SESSION['username']?>&ensp;</a>
+					<a class="link" href="account.php">my account&ensp;</a>
+					<a class="linkbad" href="account.php?logout='1'">logout</a>
 				</div>
 			</div>
 		</div>
@@ -88,9 +82,9 @@
 			</form>
 			<a id="deviceaddBtn" class="devicechange">add device&ensp;<i class="fa fa-plus"></i></a>
 			<div id="status" class="deviceinfo">
-				<a class="devicechange">&ensp;settings&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&ensp;</a>
-				<a class="devicechange">rename&nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&ensp;</a>
-				<a class="devicedelete">delete&nbsp;<i class="fa fa-ban" aria-hidden="true"></i></a>
+				<a id="devicesettingBtn" class="devicechange">&ensp;settings&nbsp;<i class="fa fa-cog"></i>&ensp;</a>
+				<a id="devicerenameBtn" class="devicechange">rename&nbsp;<i class="fa fa-edit"></i>&ensp;</a>
+				<a id="devicedeleteBtn" class="devicedelete">delete&nbsp;<i class="fa fa-ban"></i></a>
 			</div>
 			<p class="footer" align="center">
 			<?php  if (!isset($_SESSION['username'])) : ?>
