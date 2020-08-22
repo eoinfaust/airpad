@@ -34,7 +34,7 @@ for (i = 0; i < l; i++){
                     $('#status').show();
                 }
                 h.click();
-                document.getElementById("dnamedel").innerHTML = $("#devicechosen :selected").text();
+                document.getElementById("dnamedel").innerHTML = document.getElementById("drename").innerHTML = $("#devicechosen :selected").text();
             });
         b.appendChild(c);
     }

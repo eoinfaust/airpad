@@ -71,6 +71,23 @@
 				</form>
 			</div>
 		</div>
+		<div id="devicerenameModal" class="modal">
+			<div class="popup">
+				<span class="close"><i class="fa fa-times"></i></span>
+				<div class="logo"><br><a>Choose a new name for <a style="color:#1593eb;" id="drename"></a></div>
+				<form method="post" id="devicerename" align="center">
+					<p id=error7 class="reportb">Device name required</p>
+					<p id=error8 class="reportb">Max device name length is 10</p>
+					<p id=error9 class="reportb">Device name already exists</p>
+					<div class="input-field">
+						<input class="formfill" type="text" name="newname" id="newname" required>
+						<label for="newname">New name</label>
+					</div>
+					<input align=center type="submit" class="button" name="rename_device" id="rename_device" value="Rename">
+					<div class="clearfix"></div>
+				</form>
+			</div>
+		</div>
 		<div class="mainpage">
 			<form method="post" class="custom-select">
 				<?php
@@ -113,5 +130,6 @@
 		<script src="jsaccount/modalsaccount.js"></script>
 		<script src="jsaccount/deviceadd.js"></script>
 		<script src="jsaccount/devicedelete.js"></script>
+		<script src="jsaccount/devicerename.js"></script>
 	</body>
 </html>
