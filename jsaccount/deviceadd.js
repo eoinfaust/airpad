@@ -16,7 +16,6 @@ $(document).ready(function(){
         window.location.href = 'account.php';
       }else{
         var arr = JSON.parse(data);
-        alert(arr);
         if(arr[0]){
           $("#deviceid").addClass("inputerror");
           $("#error1").show();

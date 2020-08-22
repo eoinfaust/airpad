@@ -61,6 +61,16 @@
 				</form>
 			</div>
 		</div>
+		<div id="devicedeleteModal" class="modal">
+			<div class="popup">
+				<span class="close"><i class="fa fa-times"></i></span>
+				<div class="logo"><br><a>Are you sure you want to delete <a style="color:#1593eb;" id="dnamedel"></a><a><br> from your account?</a></div>
+				<form method="post" id="devicedelete" align="center">
+					<input align=center type="submit" class="badbutton" name="delete_device" id="delete_device" value="Delete">
+					<div class="clearfix"></div>
+				</form>
+			</div>
+		</div>
 		<div class="mainpage">
 			<form method="post" class="custom-select">
 				<?php
@@ -102,5 +112,6 @@
 		<script src="jsaccount/dropdown.js"></script>
 		<script src="jsaccount/modalsaccount.js"></script>
 		<script src="jsaccount/deviceadd.js"></script>
+		<script src="jsaccount/devicedelete.js"></script>
 	</body>
 </html>

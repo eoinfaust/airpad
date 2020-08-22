@@ -5,26 +5,21 @@ $(document).ready(function(){
     e.preventDefault();
     var data = $('#devicedelete').serializeArray();
     data.push({name: 'delete_device', value: '1'});
+    data.push({name: 'devicefordeletion', value:$("#devicechosen:selected").text()});
+    var arr = JSON.parse(data);
+    alert(arr);
     var promise = $.ajax({
-      type: "POST",
-      url: 'server.php',
-      data: data,
-      cache: false
+        type: "POST",
+        url: 'server.php',
+        data: data,
+        cache: false
     });
     promise.then(function(data){
-      if(data === 'success'){
-        window.location.href = 'account.php';
-      }else{
-        var arr = JSON.parse(data);
-        alert(arr);
-        if(arr[0]){
-          $("#deviceid").addClass("inputerror");
-          $("#error7").show();
-        }else if(arr[1]){
-          $("#deviceid").addClass("inputerror");
-          $("#error8").show();
+        if(data === 'success'){
+            window.location.href = 'account.php';
+        }else if(data === 'failure'){
+            alert('An unknown error has occurred; please contact support.')
         }
-      }
     });
   });
 });

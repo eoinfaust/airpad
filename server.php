@@ -8,6 +8,28 @@ $report = "";
 $errors = array(); 
 $db = mysqli_connect('localhost', 'root', '', 'eirpad');
 
+if (isset($_POST['delete_device'])) {
+    $username = $_SESSION['username'];
+    $devicename = mysqli_real_escape_string($db, $_POST['devicefordeletion']);
+    $stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=? LIMIT 1");
+    $stmt->bind_param("ss", $username, $devicename);
+    $stmt->execute();
+    $result = $stmt -> get_result();
+    $existdev = $result->fetch_assoc();
+    $stmt->close();
+    if (!$existdev){
+        array_push($errors, "Device doesn't exist");
+        echo 'failure';
+    }
+    if (count($errors) == 0){
+        $stmt = $db->prepare("UPDATE `devices` SET devicename=?, username=?, setting=? WHERE deviceid=?");
+        $stmt->bind_param("ssss", '', '', '', $existdev['deviceid']);
+        $stmt->execute();
+        $stmt->close();
+        echo 'success';
+    }
+}
+
 if (isset($_POST['add_device'])) {
     $username = $_SESSION['username'];
     $deviceid = mysqli_real_escape_string($db, $_POST['deviceid']);

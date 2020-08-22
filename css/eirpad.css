@@ -223,7 +223,7 @@ label{
     background-color:#202020
 }
 .select-selected:hover{
-    color: #1593eb;
+    color:#1593eb;
 }
 .select-selected:after {
     position:absolute;
@@ -321,12 +321,37 @@ select::-ms-expand{
     cursor:pointer;
     color:#1593eb;
     transition:0.2s;
-    padding-top:4%;
     margin-right:10%;
     font-size:16px;
+}
+.forgotlink:hover{
+    color:white;
 }
 .tos{
     color:white;
     font-size:12px;
     margin-top:-50%;
+}
+.badbutton{
+    cursor:pointer;
+    color:white;
+    background:red;
+    border:0;
+    border-radius:5px;
+    padding-left:2em;
+    padding-right:2em;
+    padding-bottom:0.6em;
+    padding-top:0.6em;
+    display:inline-block;
+    justify-content:center;
+    margin:15%;
+    margin-top:0.75em;
+    margin-bottom:2em;
+    font-size:18px;
+    font-weight:400;
+    box-shadow:0px 12px 36px 2px rgba(0, 0, 0, 0.04);
+    transition:0.2s;
+}
+.badbutton:hover{
+    background:rgba(255, 0, 0, 0.479);
 }
