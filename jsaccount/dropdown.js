@@ -72,11 +72,3 @@ function up(){
     }
     alert(dop);
 }
-function myNewFunction(element){
-    var text = element.options[element.selectedIndex].text;
-    document.getElementById("test").innerHTML = text;
-}
-function getdevname() {
-    var x = document.getElementById("devicechosen").value;
-    document.getElementById("demo").innerHTML = x;
-}

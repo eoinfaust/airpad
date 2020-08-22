@@ -82,7 +82,7 @@
 				$stmt->close();
 				$init = '0';
 				$defaultselect = 'my devices';
-				echo "<select id='devicechosen' onselect='getdevname()'>";
+				echo "<select id='devicechosen'>";
 				echo "<option value='".$init."'> ".$defaultselect." </option>"; 
 				while ($row = mysqli_fetch_array($result)) {
 					echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 

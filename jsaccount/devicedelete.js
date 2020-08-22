@@ -5,9 +5,8 @@ $(document).ready(function(){
     e.preventDefault();
     var data = $('#devicedelete').serializeArray();
     data.push({name: 'delete_device', value: '1'});
-    data.push({name: 'devicefordeletion', value:$("#devicechosen:selected").text()});
-    var arr = JSON.parse(data);
-    alert(arr);
+    var devicevalue = $('#devicechosen :selected').val();
+    data.push({name: 'devicefordeletion', value:devicevalue});
     var promise = $.ajax({
         type: "POST",
         url: 'server.php',
@@ -15,10 +14,10 @@ $(document).ready(function(){
         cache: false
     });
     promise.then(function(data){
-        if(data === 'success'){
-            window.location.href = 'account.php';
-        }else if(data === 'failure'){
+        if(data === 'failure'){
             alert('An unknown error has occurred; please contact support.')
+        }else{
+            window.location.href = 'account.php';
         }
     });
   });
