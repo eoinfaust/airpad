@@ -42,28 +42,22 @@ if (isset($_POST['add_device'])) {
     $result = $stmt -> get_result();
     $existdev = $result->fetch_assoc();
     $stmt->close();
-    if ($existdev && ($devicename !== '') ){
+    if ($existdev && ($existdev['username'] !== '')){
         array_push($errors, "Device already registered");
         $deviceadderrors[4] = true;
     }
-    $stmt = $db->prepare("SELECT * FROM deviceids WHERE deviceid=? LIMIT 1");
-    $stmt->bind_param("s", $deviceid);
-    $stmt->execute();
-    $result = $stmt -> get_result();
-    $existdev = $result->fetch_assoc();
-    $stmt->close();
     if (!$existdev){
         array_push($errors, "Device ID doesn't exist");
         $deviceadderrors[5] = true;
     }
     if (count($errors) == 0){
-        $stmt = $db->prepare("INSERT INTO `devices` (`deviceid`, `devicename`, `username`) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $deviceid, $devicename, $username);
+        $stmt = $db->prepare("UPDATE `devices` SET devicename=?, username=? WHERE deviceid=?");
+        $stmt->bind_param("sss", $devicename, $username, $deviceid);
         $stmt->execute();
         $stmt->close();
         echo 'success';
     }else{
-        echo json_encode($loginerrors);
+        echo json_encode($deviceadderrors);
     }
 }
 
@@ -173,6 +167,7 @@ if (isset($_POST['signin_user'])){
         echo json_encode($loginerrors);
     }
 }
+
 function validStrLen($str){
     $len = strlen($str);
     if($len < 8){

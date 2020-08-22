@@ -15,7 +15,7 @@
 <html>
 	<head>
 		<title>eirpad | My Account</title>
-		<link rel="stylesheet" href="eirpad.css?version=1">
+		<link rel="stylesheet" href="css/eirpad.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
@@ -49,16 +49,16 @@
 				<span class="close"><i class="fa fa-times"></i></span>
 				<div class="logo"><a>Add a device to your account</a></div>
 				<form method="post" id="deviceaddform" align="center">
-					<p id=error101 class="reportb">Device ID required</p>
-					<p id=error105 class="reportb">Device already registered</p>
-					<p id=error106 class="reportb">That device ID doesn't exist</p>
+					<p id=error1 class="reportb">Device ID required</p>
+					<p id=error5 class="reportb">Device already registered</p>
+					<p id=error6 class="reportb">That device ID doesn't exist</p>
 					<div class="input-field">
 						<input class="formfill" type="text" name="deviceid" id="deviceid" required>
 						<label for="deviceid">Device ID</label>
 					</div>
-					<p id=error102 class="reportb">Device name required</p>
-					<p id=error103 class="reportb">Max device name length is 10</p>
-					<p id=error104 class="reportb">Device name already exists</p>
+					<p id=error2 class="reportb">Device name required</p>
+					<p id=error3 class="reportb">Max device name length is 10</p>
+					<p id=error4 class="reportb">Device name already exists</p>
 					<div class="input-field">
 						<input class="formfill" type="text" name="devicename" id="devicename" required>
 						<label for="devicename">Device name</label>
@@ -105,7 +105,8 @@
 			<?php endif ?>
 			<a class="small">&ensp;&copy; 2020 eirpad</a></p>
 		</div>
-		<script src="js/dropdown.js"></script>
-		<script src="js/deviceadd.js"></script>
+		<script src="jsaccount/dropdown.js"></script>
+		<script src="jsaccount/modalsaccount.js"></script>
+		<script src="jsaccount/deviceadd.js"></script>
 	</body>
 </html>

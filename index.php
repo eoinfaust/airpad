@@ -4,7 +4,7 @@ session_start();?>
 <html lang="en" dir="ltr">
   <head>
     <title>eirpad | Home</title>
-    <link rel="stylesheet" href="eirpad.css?version=1">
+    <link rel="stylesheet" href="css/eirpad.css?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
@@ -129,8 +129,8 @@ session_start();?>
       <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
       <a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
     </div>
-    <script src="js/modalindex.js"></script>
-    <script src="js/signin.js"></script>
-    <script src="js/register.js"></script>
+    <script src="jsindex/modalsindex.js"></script>
+    <script src="jsindex/signin.js"></script>
+    <script src="jsindex/register.js"></script>
   </body>
 </html>
