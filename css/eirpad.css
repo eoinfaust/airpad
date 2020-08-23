@@ -342,7 +342,7 @@ select::-ms-expand{
     padding-right:2em;
     padding-bottom:0.6em;
     padding-top:0.6em;
-    display:inline-block;
+    display:flex; 
     justify-content:center;
     margin:15%;
     margin-top:0.75em;
