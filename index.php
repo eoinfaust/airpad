@@ -4,7 +4,11 @@ session_start();?>
 <html lang="en" dir="ltr">
   <head>
     <title>eirpad | Home</title>
-    <link rel="stylesheet" href="css/eirpad.css?version=1">
+    <link rel="stylesheet" href="css/main.css?version=1">
+    <link rel="stylesheet" href="css/dropdowns.css?version=1">
+    <link rel="stylesheet" href="css/buttons.css?version=1">
+    <link rel="stylesheet" href="css/input.css?version=1">
+    <link rel="stylesheet" href="css/navbar.css?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
@@ -17,22 +21,33 @@ session_start();?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-  <div class="head">
-			<div class="clearfix">
-				<a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
-				<div class="headertext">
-					<?php  if (isset($_SESSION['username'])) : ?>
-						<a><?=$_SESSION['username']?>&ensp;</a>
-						<a class="link" href="account.php">my account&ensp;</a>
-						<a class="linkbad" href="account.php?logout='1'">logout</a>
-					<?php endif ?>
-					<?php  if (!isset($_SESSION['username'])) : ?>
-						<a class="headerlink" id="signinmodBtn">Sign in</a>
-						<a class="headerlink" id="registermodBtn">Register</a>
-					<?php endif ?>
-				</div>
-			</div>
-    </div>
+    <nav>
+      <div class="nav-logo">
+        <a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
+      </div>
+      <ul class="nav-links">
+        <?php  if (isset($_SESSION['username'])) : ?>
+          <li><a><?=$_SESSION['username']?>&ensp;</a></li>
+          <li><a class="link" href="account.php">my account&ensp;</a></li>
+          <li><a class="linkbad" href="account.php?logout='1'">logout</a></li>
+        <?php endif ?>
+        <?php  if (!isset($_SESSION['username'])) : ?>
+          <li><button class="button" id="signinmodBtn">Sign in</button></li>
+          <li><button class="button" id="registermodBtn">Register</button></li>
+        <?php endif ?>
+      </ul>
+      <ul class="nav-links-m">
+        <?php  if (isset($_SESSION['username'])) : ?>
+          <li><a><?=$_SESSION['username']?>&ensp;</a></li>
+          <li><a class="link" href="account.php">my account&ensp;</a></li>
+          <li><a class="linkbad" href="account.php?logout='1'">logout</a></li>
+        <?php endif ?>
+        <?php  if (!isset($_SESSION['username'])) : ?>
+          <li><button class="button" id="signinmodBtn">Sign in</button></li>
+          <li><button class="button" id="registermodBtn">Register</button></li>
+        <?php endif ?>
+      </ul>
+    </nav>
     <div id="signinModal" class="modal">
       <div class="popup">
         <span class="close"><i class="fa fa-times"></i></span>
@@ -55,7 +70,7 @@ session_start();?>
           <div class="clearfix"></div>
         </form>
         <p align="center" >
-        <a>Need an account?&ensp;</a>
+        <a>No account?&ensp;</a>
         <a class="link" id="registermodBtn1">Register now <i class="fa fa-chevron-right"></i></a></p>
       </div>
     </div>
@@ -98,7 +113,7 @@ session_start();?>
         </form>
         <br>
         <p align="center" >
-        <a>Already have an account?&ensp;</a>
+        <a>Have an account?&ensp;</a>
         <a class="link" id="signinmodBtn1">Sign in <i class="fa fa-chevron-right"></i></a></p>
       </div>
     </div>
@@ -132,5 +147,6 @@ session_start();?>
     <script src="jsindex/modalsindex.js"></script>
     <script src="jsindex/signin.js"></script>
     <script src="jsindex/register.js"></script>
+    <script src="js/navbar.js"></script>
   </body>
 </html>

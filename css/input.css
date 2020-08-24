@@ -1,0 +1,47 @@
+.formfill {
+  width: 65%;
+  background-color: #202020;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 2% 4%;
+  border: 2px solid #202020;
+  border-bottom: 2px solid white;
+  outline: none;
+  margin-bottom: 6%;
+  text-align: left;
+  position: relative;
+}
+.formfill:focus {
+  border: 2px solid white !important;
+}
+input:focus ~ label,
+input:valid ~ label {
+  font-size: 14px;
+  top: -29%;
+  left: 14%;
+  color: var(--epblue);
+}
+.inputerror {
+  border-color: red;
+}
+.error {
+  color: red;
+  text-align: center;
+}
+.input-field {
+  position: relative;
+}
+label {
+  font-weight: 400;
+  font-size: 22px;
+  text-align: left;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 100%;
+  color: white;
+  transition: 0.2s all;
+  cursor: text;
+}

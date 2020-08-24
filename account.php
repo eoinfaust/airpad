@@ -15,7 +15,11 @@
 <html>
 	<head>
 		<title>eirpad | My Account</title>
-		<link rel="stylesheet" href="css/eirpad.css?version=1">
+		<link rel="stylesheet" href="css/main.css?version=1">
+		<link rel="stylesheet" href="css/dropdowns.css?version=1">
+		<link rel="stylesheet" href="css/buttons.css?version=1">
+		<link rel="stylesheet" href="css/input.css?version=1">
+		<link rel="stylesheet" href="css/navbar.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
@@ -66,7 +70,7 @@
 				<span class="close"><i class="fa fa-times"></i></span>
 				<div class="logo"><br><a>Are you sure you want to delete <a style="color:#1593eb;" id="dnamedel"></a><a><br> from your account?</a></div>
 				<form method="post" id="devicedelete" align="center">
-					<input align=center type="submit" class="badbutton" name="delete_device" id="delete_device" value="Delete">
+					<input align=center type="submit" class="button badbutton" name="delete_device" id="delete_device" value="Delete">
 					<div class="clearfix"></div>
 				</form>
 			</div>
