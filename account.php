@@ -21,6 +21,7 @@
 		<link rel="stylesheet" href="css/input.css?version=1">
 		<link rel="stylesheet" href="css/navbar.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 		<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
@@ -32,102 +33,136 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="head">
-			<div class="clearfix">
+		<nav>
+			<div class="nav-logo">
 				<a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
-				<div class="headertext">
-					<a><?=$_SESSION['username']?>&ensp;</a>
-					<a class="link" href="account.php">my account&ensp;</a>
-					<a class="linkbad" href="account.php?logout='1'">logout</a>
-				</div>
 			</div>
-		</div>
+			<div class="nav-logo-m">
+				<a href="index.php" >
+				<?php  if (isset($_SESSION['username'])) : ?>
+				<img class="img" src="icon/eirpad.svg" alt="eirpad">
+				<?php endif ?>
+				<?php  if (!isset($_SESSION['username'])) : ?>
+				<img class="img" src="icon/eirpadtext.svg" alt="eirpad">
+				<?php endif ?>
+				</a>
+			</div>
+				<?php  if (isset($_SESSION['username'])) : ?>
+				<ul class="nav-links-lin">
+				<li><a><?=$_SESSION['username']?>&ensp;</a></li>
+				<li><a class="link" id="alertstBtn"><i class="fa fa-bell"></i>&nbsp;alerts&ensp;</a></li>
+				<li><a class="link" href="settings.php"><i class="fa fa-cog"></i>&nbsp;settings&ensp;</a></li>
+				<li><a class="link" href="account.php"><i class="fas fa-laptop-house"></i>&nbsp;account&ensp;</a></li>
+				<li><a class="linkbad" href="account.php?logout='1'"><i class="fa fa-sign-out-alt"></i>&nbsp;sign out</a></li>
+				</ul>
+				<?php endif ?>
+				<?php  if (!isset($_SESSION['username'])) : ?>
+				<ul class="nav-links-lout">
+				<li><button class="button" id="signinmodBtn">Sign in</button></li>
+				<li><button class="button" id="registermodBtn">Register</button></li>
+				</ul>
+				<?php endif ?>
+			<ul class="nav-links-m">
+				<?php  if (isset($_SESSION['username'])) : ?>
+				<li><button class="icon-button" id="alertsBtn1"><i class="fa fa-bell"></i></button></li>
+				<li><a class="icon-button" href="settings.php"><i class="fa fa-cog"></i></a></li>
+				<li><a class="icon-button" href="account.php"><i class="fas fa-laptop-house"></i></a></li>
+				<li><a class="icon-button linkbad" href="account.php?logout='1'"><i class="fa fa-sign-out-alt"></i></a></li>
+				<?php endif ?>
+				<?php  if (!isset($_SESSION['username'])) : ?>
+				<li><button class="icon-button" id="signinmodBtn2"><i class="fa fa-sign-in"></i></button></li>
+				<li><button class="icon-button" id="registermodBtn2"><i class="fa fa-user-plus"></i></button></li>
+				<?php endif ?>
+			</ul>
+		</nav>
 		<div id="deviceaddModal" class="modal">
 			<div class="popup">
-				<span class="close"><i class="fa fa-times"></i></span>
+				<span class="close">&times;</span><br>
 				<div class="logo"><a>Add a device to your account</a></div>
 				<form method="post" id="deviceaddform" align="center">
 					<p id=error1 class="reportb">Device ID required</p>
-					<p id=error5 class="reportb">Device already registered</p>
-					<p id=error6 class="reportb">That device ID doesn't exist</p>
+					<p id=error5 class="reportb">Device in use</p>
+					<p id=error6 class="reportb">Device ID doesn't exist</p>
 					<div class="input-field">
-						<input class="formfill" type="text" name="deviceid" id="deviceid" required>
+						<input class="formfill" type="text" name="deviceid" id="deviceid" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
 						<label for="deviceid">Device ID</label>
 					</div>
-					<p id=error2 class="reportb">Device name required</p>
-					<p id=error3 class="reportb">Max device name length is 10</p>
-					<p id=error4 class="reportb">Device name already exists</p>
+					<p id=error2 class="reportb">Name required</p>
+					<p id=error3 class="reportb">10 characters max</p>
+					<p id=error4 class="reportb">Name already exists</p>
 					<div class="input-field">
-						<input class="formfill" type="text" name="devicename" id="devicename" required>
+						<input class="formfill" type="text" name="devicename" id="devicename" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
 						<label for="devicename">Device name</label>
 					</div>
-					<input type="submit" class="button" name="add_device" id="add_device" value="Add device">
+					<a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
+          			<div class="clearfix"></div>
+					<input type="submit" class="button" name="add_device" id="add_device" value="Add">
 				</form>
 			</div>
 		</div>
 		<div id="devicedeleteModal" class="modal">
 			<div class="popup">
-				<span class="close"><i class="fa fa-times"></i></span>
-				<div class="logo"><br><a>Are you sure you want to delete <a style="color:#1593eb;" id="dnamedel"></a><a><br> from your account?</a></div>
+				<span class="close">&times;</i></span>
+				<div class="logo"><br><a>Are you sure you want to delete<br><a style="color:#1593eb;" id="dnamedel"></a><a><br>from your account?</a></div>
 				<form method="post" id="devicedelete" align="center">
-					<input align=center type="submit" class="button badbutton" name="delete_device" id="delete_device" value="Delete">
+					<input type="submit" class="button linkbad" name="delete_device" id="delete_device" value="Delete">
 					<div class="clearfix"></div>
 				</form>
+				<p align=center>
+					<a class="tos" style="text-align:left;">Removing this device will delete its associated data.<br>
+					You can add this device again later.</a>
+				</p>
 			</div>
 		</div>
 		<div id="devicerenameModal" class="modal">
 			<div class="popup">
-				<span class="close"><i class="fa fa-times"></i></span>
-				<div class="logo"><br><a>Choose a new name for <a style="color:#1593eb;" id="drename"></a></div>
+				<span class="close">&times;</i></span>
+				<div class="logo"><br><a>Choose a new name for<br><a style="color:#1593eb;" id="drename"></a></div>
 				<form method="post" id="devicerename" align="center">
-					<p id=error7 class="reportb">Device name required</p>
-					<p id=error8 class="reportb">Max device name length is 10</p>
-					<p id=error9 class="reportb">Device name already exists</p>
+					<p id=error7 class="reportb">Name required</p>
+					<p id=error8 class="reportb">10 characters max</p>
+					<p id=error9 class="reportb">Name already exists</p>
 					<div class="input-field">
 						<input class="formfill" type="text" name="newname" id="newname" required>
 						<label for="newname">New name</label>
 					</div>
+					<a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
+          			<div class="clearfix"></div>
 					<input align=center type="submit" class="button" name="rename_device" id="rename_device" value="Rename">
 					<div class="clearfix"></div>
 				</form>
 			</div>
 		</div>
 		<div class="mainpage">
-			<form method="post" class="custom-select">
-				<?php
-				$db = mysqli_connect('localhost', 'root', '', 'eirpad');
-				$stmt = $db->prepare("SELECT devicename FROM devices WHERE username=? ORDER BY devicename");
-				$stmt->bind_param("s", $_SESSION['username']);
-				$stmt->execute();
-				$result = $stmt -> get_result();
-				$stmt->close();
-				$init = '0';
-				$defaultselect = 'my devices';
-				echo "<select id='devicechosen'>";
-				echo "<option value='".$init."'> ".$defaultselect." </option>"; 
-				while ($row = mysqli_fetch_array($result)) {
-					echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 
-				}
-				echo "</select>";
-				?>
-			</form>
-			<a id="deviceaddBtn" class="devicechange">add device&ensp;<i class="fa fa-plus"></i></a>
-			<div id="status" class="deviceinfo">
-				<a id="devicesettingBtn" class="devicechange">&ensp;settings&nbsp;<i class="fa fa-cog"></i>&ensp;</a>
-				<a id="devicerenameBtn" class="devicechange">rename&nbsp;<i class="fa fa-edit"></i>&ensp;</a>
-				<a id="devicedeleteBtn" class="devicedelete">delete&nbsp;<i class="fa fa-ban"></i></a>
-			</div>
-			<p class="footer" align="center">
-			<?php  if (!isset($_SESSION['username'])) : ?>
-				<a class="small link" href="signin.php"><i class="fa fa-sign-in"></i> sign in</a>
-				<a>&nbsp;|&nbsp;</a>
-				<a class="small link" href="register.php"><i class="fa fa-file-signature"></i> register&ensp;</a>
-			<?php endif ?>
+			<ul class="deviceinfo0">
+				<form method="post" class="custom-select">
+					<?php
+					$db = mysqli_connect('localhost', 'root', '', 'eirpad');
+					$stmt = $db->prepare("SELECT devicename FROM devices WHERE username=? ORDER BY devicename");
+					$stmt->bind_param("s", $_SESSION['username']);
+					$stmt->execute();
+					$result = $stmt -> get_result();
+					$stmt->close();
+					$init = '0';
+					$defaultselect = 'my devices';
+					echo "<select id='devicechosen'>";
+					echo "<option value='".$init."'> ".$defaultselect." </option>"; 
+					while ($row = mysqli_fetch_array($result)) {
+						echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 
+					}
+					echo "</select>";
+					?>
+				</form>
+				<div class="deviceinfo1">
+					<a id="deviceaddBtn" class="icon-button"><i class="fa fa-plus"></i></a>
+					<li><a id="devicerenameBtn" class="icon-button"><i class="fa fa-edit"></i></a></li>
+					<li><a id="devicedeleteBtn" class="icon-button linkbad"><i class="fa fa-ban"></i></a></li>
+				</div>
+			</ul>
+		</div><br>
+		<div class="footer" align="center">
 			<a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
 			<a class="small link" href="support.php"><i class="fa fa-question"></i> support&ensp;</a>
-			<?php  if (isset($_SESSION['username'])) : ?>
-				<a class="small linkbad" href="account.php?logout='1'"><i class="fa fa-sign-out"></i> logout&ensp;</a>
-			<?php endif ?>
 			<a class="small">&ensp;&copy; 2020 eirpad</a></p>
 		</div>
 		<script src="jsaccount/dropdown.js"></script>
@@ -135,5 +170,6 @@
 		<script src="jsaccount/deviceadd.js"></script>
 		<script src="jsaccount/devicedelete.js"></script>
 		<script src="jsaccount/devicerename.js"></script>
+		<script src="js/navbar.js"></script>
 	</body>
 </html>

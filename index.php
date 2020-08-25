@@ -9,7 +9,7 @@ session_start();?>
     <link rel="stylesheet" href="css/buttons.css?version=1">
     <link rel="stylesheet" href="css/input.css?version=1">
     <link rel="stylesheet" href="css/navbar.css?version=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
@@ -25,49 +25,63 @@ session_start();?>
       <div class="nav-logo">
         <a href="index.php" ><img class="img" src="icon/eirpadtext.svg" alt="eirpad"></a>
       </div>
-      <ul class="nav-links">
+      <div class="nav-logo-m">
+        <a href="index.php" >
         <?php  if (isset($_SESSION['username'])) : ?>
-          <li><a><?=$_SESSION['username']?>&ensp;</a></li>
-          <li><a class="link" href="account.php">my account&ensp;</a></li>
-          <li><a class="linkbad" href="account.php?logout='1'">logout</a></li>
+          <img class="img" src="icon/eirpad.svg" alt="eirpad">
         <?php endif ?>
         <?php  if (!isset($_SESSION['username'])) : ?>
+          <img class="img" src="icon/eirpadtext.svg" alt="eirpad">
+        <?php endif ?>
+        </a>
+      </div>
+        <?php  if (isset($_SESSION['username'])) : ?>
+        <ul class="nav-links-lin">
+          <li><a><?=$_SESSION['username']?>&ensp;</a></li>
+          <li><a class="link" id="alertstBtn"><i class="fa fa-bell"></i>&nbsp;alerts&ensp;</a></li>
+          <li><a class="link" href="settings.php"><i class="fa fa-cog"></i>&nbsp;settings&ensp;</a></li>
+          <li><a class="link" href="account.php"><i class="fas fa-laptop-house"></i>&nbsp;account&ensp;</a></li>
+          <li><a class="linkbad" href="account.php?logout='1'"><i class="fa fa-sign-out-alt"></i>&nbsp;sign out</a></li>
+        </ul>
+        <?php endif ?>
+        <?php  if (!isset($_SESSION['username'])) : ?>
+        <ul class="nav-links-lout">
           <li><button class="button" id="signinmodBtn">Sign in</button></li>
           <li><button class="button" id="registermodBtn">Register</button></li>
+        </ul>
         <?php endif ?>
-      </ul>
       <ul class="nav-links-m">
         <?php  if (isset($_SESSION['username'])) : ?>
-          <li><a><?=$_SESSION['username']?>&ensp;</a></li>
-          <li><a class="link" href="account.php">my account&ensp;</a></li>
-          <li><a class="linkbad" href="account.php?logout='1'">logout</a></li>
+          <li><button class="icon-button" id="alertsBtn1"><i class="fa fa-bell"></i></button></li>
+          <li><a class="icon-button" href="settings.php"><i class="fa fa-cog"></i></a></li>
+          <li><a class="icon-button" href="account.php"><i class="fas fa-laptop-house"></i></a></li>
+          <li><a class="icon-button linkbad" href="account.php?logout='1'"><i class="fa fa-sign-out-alt"></i></a></li>
         <?php endif ?>
         <?php  if (!isset($_SESSION['username'])) : ?>
-          <li><button class="button" id="signinmodBtn">Sign in</button></li>
-          <li><button class="button" id="registermodBtn">Register</button></li>
+          <li><button class="icon-button" id="signinmodBtn2"><i class="fa fa-sign-in"></i></button></li>
+          <li><button class="icon-button" id="registermodBtn2"><i class="fa fa-user-plus"></i></button></li>
         <?php endif ?>
       </ul>
     </nav>
     <div id="signinModal" class="modal">
       <div class="popup">
-        <span class="close"><i class="fa fa-times"></i></span>
+        <span class="close">&times;</i></span><br>
         <div class="logo"><img src="icon/eirpadtext.svg" alt="eirpad"></div>
         <form method="post" id="signinform" align="center">
-          <p id=error12 class="reportb">Incorrect username/password</p>
+          <p id=error12 class="reportb">Wrong username/password</p>
           <p id=error13 class="reportb">Username required</p>
           <div class="input-field">
-            <input class="formfill" type="text" name="username" id="username" required>
+            <input class="formfill" type="text" name="username" id="username" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="username">Username</label>
           </div>
           <p id=error14 class="reportb">Password required</p>
           <div class="input-field">
-          <input class="formfill" type="password" name="password" id="password" required>
+          <input class="formfill" type="password" name="password" id="password" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="password">Password</label>
           </div>
-          <input type="submit" class="button" name="signin_user" id="signin_user" value="Sign in" style="float:left;">
-          <br>
-          <a class="forgotlink" id="#" align=left>Forgot password?</a>
+          <span class= forgotlink id='#'>Forgot Password?</span>
           <div class="clearfix"></div>
+          <input type="submit" class="button" name="signin_user" id="signin_user" value="Sign in">
         </form>
         <p align="center" >
         <a>No account?&ensp;</a>
@@ -76,42 +90,44 @@ session_start();?>
     </div>
     <div id="registerModal" class="modal">
       <div class="popup">
-        <span class="close"><i class="fa fa-times"></i></span>
+        <span class="close">&times;</i></span><br>
         <div class="logo"><a href="index.php" ><img src="icon/eirpadtext.svg" alt="eirpad"></a></div>
         <form method="post" id="registerform" align="center">
-          <p id=error1 class="reportb">Username is required</p>
-          <p id=error2 class="reportb">Username must be 8-16 characters</p>
-          <p id=error3 class="reportb">Username must be alphanumeric</p>
-          <p id=error10 class="reportb">Username already exists</p>
+          <p id=error1 class="reportb">Username required</p>
+          <p id=error2 class="reportb">Must be 8-16 characters</p>
+          <p id=error3 class="reportb">Must be alphanumeric</p>
+          <p id=error10 class="reportb">Username in use</p>
           <div class="input-field">
-            <input class="formfill" type="text" name="username1" id="username1" required>
+            <input class="formfill" type="text" name="username1" id="username1" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="username1">Username</label>
           </div>
-          <p id=error4 class="reportb">Email is required</p>
-          <p id=error5 class="reportb">Email address is invalid</p>
-          <p id=error11 class="reportb">Email already exists</p>
+          <p id=error4 class="reportb">Email required</p>
+          <p id=error5 class="reportb">Email is invalid</p>
+          <p id=error11 class="reportb">Email in use</p>
           <div class="input-field">
-            <input class="formfill" type="text" name="email" id="email" required>
+            <input class="formfill" type="text" name="email" id="email" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="email">Email</label>
           </div>
-          <p id=error6 class="reportb">Password is required</p>
-          <p id=error7 class="reportb">Password must be 8-16 characters</p>
-          <p id=error9 class="reportb">The passwords don't match</p>
+          <p id=error6 class="reportb">Password required</p>
+          <p id=error7 class="reportb">Must be 8-16 characters</p>
+          <p id=error9 class="reportb">Passwords don't match</p>
           <div class="input-field">
-          <input class="formfill" type="password" name="password1" id="password1" required>
+          <input class="formfill" type="password" name="password1" id="password1" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="password1">Password</label>
           </div>
-          <p id=error8 class="reportb">Password confirmation required</p>
+          <p id=error8 class="reportb">Confirmation required</p>
           <div class="input-field">
-          <input class="formfill" type="password" name="password2" id="password2" required>
+          <input class="formfill" type="password" name="password2" id="password2" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="password2">Confirm password</label>
           </div>
-          <input type="submit" class="button" name="reg_user" id="reg_user" value="Register" style="float:left;">
+          <a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
           <div class="clearfix"></div>
-          <a class="tos" style="text-align:left;">By clicking "Register, you agree to our </a><a class="tos" href="terms">terms of service</a>
-          <a class="tos"> and </a><a class="tos" href="privacy">privacy policy</a><a class="tos">.</a>
+          <input type="submit" class="button" name="reg_user" id="reg_user" value="Register">
         </form>
-        <br>
+        <p align=center>
+          <a class="tos" style="text-align:left;">By clicking "Register, you agree to our </a><a class="tos" href="terms">privacy policy</a><br>
+          <a class="tos"> and </a><a class="tos" href="privacy">terms of service</a><a class="tos">.</a>
+        </p>
         <p align="center" >
         <a>Have an account?&ensp;</a>
         <a class="link" id="signinmodBtn1">Sign in <i class="fa fa-chevron-right"></i></a></p>
@@ -137,12 +153,9 @@ session_start();?>
       <a class="link" href="support.php" style="text-decoration: none";>Get in touch <i class="fa fa-chevron-right" style="font-size:20px"></i></a></p>
       <br>
       <p align="center" >
-      <?php  if (isset($_SESSION['username'])) : ?>
-        <a class="small linkbad" href="index.php?logout='1'"><i class="fa fa-sign-out"></i> logout&ensp;</a>
-      <?php endif ?>
       <a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
       <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
-      <a class="small" >&ensp;&ensp; &copy; 2020 eirpad</a></p>
+      <a class="small" >&copy; 2020 eirpad</a></p>
     </div>
     <script src="jsindex/modalsindex.js"></script>
     <script src="jsindex/signin.js"></script>

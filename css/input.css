@@ -1,20 +1,20 @@
 .formfill {
   width: 65%;
-  background-color: #202020;
-  color: white;
-  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--content);
+  font-weight: 300;
   font-size: 18px;
   letter-spacing: 1px;
   padding: 2% 4%;
-  border: 2px solid #202020;
-  border-bottom: 2px solid white;
+  border: 1px solid var(--bg);
+  border-bottom: 1px solid var(--content);
   outline: none;
   margin-bottom: 6%;
   text-align: left;
   position: relative;
 }
 .formfill:focus {
-  border: 2px solid white !important;
+  border: 1px solid var(--content) !important;
 }
 input:focus ~ label,
 input:valid ~ label {
@@ -34,14 +34,14 @@ input:valid ~ label {
   position: relative;
 }
 label {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 22px;
   text-align: left;
   position: absolute;
   top: 10%;
   left: 15%;
   width: 100%;
-  color: white;
+  color: var(--content);
   transition: 0.2s all;
   cursor: text;
 }
