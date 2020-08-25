@@ -52,14 +52,14 @@ session_start();?>
         <?php endif ?>
       <ul class="nav-links-m">
         <?php  if (isset($_SESSION['username'])) : ?>
-          <li><button class="icon-button" id="alertsBtn1"><i class="fa fa-bell"></i></button></li>
+          <li><a class="icon-button" id="alertsBtn1"><i class="fa fa-bell"></i></a></li>
           <li><a class="icon-button" href="settings.php"><i class="fa fa-cog"></i></a></li>
           <li><a class="icon-button" href="account.php"><i class="fas fa-laptop-house"></i></a></li>
           <li><a class="icon-button linkbad" href="account.php?logout='1'"><i class="fa fa-sign-out-alt"></i></a></li>
         <?php endif ?>
         <?php  if (!isset($_SESSION['username'])) : ?>
-          <li><button class="icon-button" id="signinmodBtn2"><i class="fa fa-sign-in"></i></button></li>
-          <li><button class="icon-button" id="registermodBtn2"><i class="fa fa-user-plus"></i></button></li>
+          <li><a class="icon-button" id="signinmodBtn2"><i class="fa fa-sign-in-alt"></i></a></li>
+          <li><a class="icon-button" id="registermodBtn2"><i class="fa fa-user-plus"></i></a></li>
         <?php endif ?>
       </ul>
     </nav>
@@ -152,11 +152,12 @@ session_start();?>
       <br><br><a>Have a question or problem we can help you with?&ensp;</a>
       <a class="link" href="support.php" style="text-decoration: none";>Get in touch <i class="fa fa-chevron-right" style="font-size:20px"></i></a></p>
       <br>
-      <p align="center" >
-      <a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
-      <a class="small link" href="support.php"><i class="fa fa-question"></i> support</a>
-      <a class="small" >&copy; 2020 eirpad</a></p>
-    </div>
+    </div><br>
+		<div class="footer" align="center">
+			<a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
+			<a class="small link" href="support.php"><i class="fa fa-question"></i> support&ensp;</a>
+			<a class="small">&ensp;&copy; 2020 eirpad</a></p>
+		</div>
     <script src="jsindex/modalsindex.js"></script>
     <script src="jsindex/signin.js"></script>
     <script src="jsindex/register.js"></script>

@@ -21,10 +21,10 @@ body {
 }
 .mainpage {
   background-color: var(--bg);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 79%;
   padding-top: 10px;
+  padding-left: 8%;
+  padding-right: 8%;
   margin-top: 0%;
   margin-bottom: -1%;
 }
