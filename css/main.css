@@ -113,7 +113,8 @@ a {
   display: flex;
   list-style: none;
   justify-content: space-around;
-  width: 100%;
+  left: 0;
+  width: 90%;
 }
 .deviceinfo1 {
   display: flex;

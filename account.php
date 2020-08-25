@@ -133,7 +133,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="mainpage">
+		<div>
 			<ul class="deviceinfo0">
 				<form method="post" class="custom-select">
 					<?php
@@ -159,7 +159,8 @@
 					<li><a id="devicedeleteBtn" class="icon-button linkbad"><i class="fa fa-ban"></i></a></li>
 				</div>
 			</ul>
-		</div><br>
+		</div>
+		<br>
 		<div class="footer" align="center">
 			<a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
 			<a class="small link" href="support.php"><i class="fa fa-question"></i> support&ensp;</a>
