@@ -139,3 +139,18 @@ a {
   font-size: 12px;
   margin-top: -50%;
 }
+.settings-list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 5px;
+  width: 250px;
+}
+.settings-list li {
+  padding: 10px;
+}
+.settings-list li a {
+  color: var(--epblue);
+  font-weight: 400;
+}

@@ -1,4 +1,4 @@
-$("#devicerenameBtn").hide();
+$("#devicechangeBtn").hide();
 $("#devicedeleteBtn").hide();
 var x, i, j, l, ll, selElmnt, a, b, c;
 x = document.getElementsByClassName("custom-select");
@@ -32,12 +32,12 @@ for (i = 0; i < l; i++) {
           this.setAttribute("class", "same-as-selected");
           break;
         }
-        $("#devicerenameBtn").show();
+        $("#devicechangeBtn").show();
         $("#devicedeleteBtn").show();
       }
       h.click();
       document.getElementById("dnamedel").innerHTML = document.getElementById(
-        "drename"
+        "dchange"
       ).innerHTML = $("#devicechosen :selected").text();
     });
     b.appendChild(c);

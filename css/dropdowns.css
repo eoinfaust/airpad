@@ -1,4 +1,5 @@
 .custom-select {
+  left: -8%;
   color: var(--content);
   width: auto;
   display: flex;

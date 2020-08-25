@@ -7,7 +7,7 @@ function clearmodal() {
   $("#error6").hide();
   $("#error7").hide();
   $("#error8").hide();
-  $("#error9").hide();
+  $("#devicename, #deviceid, #devicename1").removeClass("inputerror");
   $("#devicename, #deviceid, #devicename1").removeClass("inputerror");
 }
 var modaladdev = document.getElementById("deviceaddModal");
@@ -16,9 +16,9 @@ var spanaddev = document.getElementsByClassName("close")[0];
 var modaldeldev = document.getElementById("devicedeleteModal");
 var btndeldev = document.getElementById("devicedeleteBtn");
 var spandeldev = document.getElementsByClassName("close")[1];
-var modalrenamedev = document.getElementById("devicerenameModal");
-var btnrenamedev = document.getElementById("devicerenameBtn");
-var spanrenamedev = document.getElementsByClassName("close")[2];
+var modalchangedev = document.getElementById("devicechangeModal");
+var btnchangedev = document.getElementById("devicechangeBtn");
+var spanchangedev = document.getElementsByClassName("close")[2];
 window.onclick = function (event) {
   if (event.target == modaladdev) {
     modaladdev.style.display = "none";
@@ -28,8 +28,8 @@ window.onclick = function (event) {
     modaldeldev.style.display = "none";
     clearmodal();
   }
-  if (event.target == modalrenamedev) {
-    modalrenamedev.style.display = "none";
+  if (event.target == modalchangedev) {
+    modalchangedev.style.display = "none";
     clearmodal();
   }
 };
@@ -47,10 +47,10 @@ spanaddev.onclick = function () {
   modaladdev.style.display = "none";
   clearmodal();
 };
-btnrenamedev.onclick = function () {
-  modalrenamedev.style.display = "block";
+btnchangedev.onclick = function () {
+  modalchangedev.style.display = "block";
 };
-spanrenamedev.onclick = function () {
-  modalrenamedev.style.display = "none";
+spanchangedev.onclick = function () {
+  modalchangedev.style.display = "none";
   clearmodal();
 };

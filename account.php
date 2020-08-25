@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="css/buttons.css?version=1">
 		<link rel="stylesheet" href="css/input.css?version=1">
 		<link rel="stylesheet" href="css/navbar.css?version=1">
+		<link rel="stylesheet" href="css/switches.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 		<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -114,22 +115,37 @@
 				</p>
 			</div>
 		</div>
-		<div id="devicerenameModal" class="modal">
+		<div id="devicechangeModal" class="modal">
 			<div class="popup">
 				<span class="close">&times;</i></span>
-				<div class="logo"><br><a>Choose a new name for<br><a style="color:#1593eb;" id="drename"></a></div>
-				<form method="post" id="devicerename" align="center">
-					<p id=error7 class="reportb">Name required</p>
-					<p id=error8 class="reportb">10 characters max</p>
-					<p id=error9 class="reportb">Name already exists</p>
+				<div class="logo"><br><a>Change the settings for<br><a style="color:#1593eb;" id="dchange"></a></div>
+				<form method="post" id="devicechange" align="center">
+					<ul class="settings-list" align="left">
+						<li><a>Turn on/off&ensp;&ensp;</a>
+						<label class="switch">
+							<input type="checkbox" id="turn-on" name="turn-on">
+							<span class="slider"></span>
+						</label></li>
+						<li><a>Notifications&ensp;</a>
+						<label class="switch">
+							<input type="checkbox" id="notifications" name="notifications">
+							<span class="slider"></span>
+						</label></li>
+						<li><a>Security mode</a>
+						<label class="switch">
+							<input type="checkbox" id="security-mode" name="security-mode">
+							<span class="slider"></span>
+						</label></li>
+					</ul>	
+					<p id=error7 class="reportb">10 characters max</p>
+					<p id=error8 class="reportb">Name already exists</p>
 					<div class="input-field">
 						<input class="formfill" type="text" name="newname" id="newname" required>
 						<label for="newname">New name</label>
 					</div>
 					<a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
-          			<div class="clearfix"></div>
-					<input align=center type="submit" class="button" name="rename_device" id="rename_device" value="Rename">
 					<div class="clearfix"></div>
+					<input type="submit" class="button" name="change_device" id="change_device" value="Save changes">
 				</form>
 			</div>
 		</div>
@@ -155,7 +171,7 @@
 				</form>
 				<div class="deviceinfo1">
 					<a id="deviceaddBtn" class="icon-button"><i class="fa fa-plus"></i></a>
-					<li><a id="devicerenameBtn" class="icon-button"><i class="fa fa-edit"></i></a></li>
+					<li><a id="devicechangeBtn" class="icon-button"><i class="fa fa-edit"></i></a></li>
 					<li><a id="devicedeleteBtn" class="icon-button linkbad"><i class="fa fa-ban"></i></a></li>
 				</div>
 			</ul>
@@ -170,7 +186,7 @@
 		<script src="jsaccount/modalsaccount.js"></script>
 		<script src="jsaccount/deviceadd.js"></script>
 		<script src="jsaccount/devicedelete.js"></script>
-		<script src="jsaccount/devicerename.js"></script>
+		<script src="jsaccount/devicechange.js"></script>
 		<script src="js/navbar.js"></script>
 	</body>
 </html>
