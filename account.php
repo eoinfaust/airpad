@@ -120,28 +120,47 @@
 				<span class="close">&times;</i></span>
 				<div class="logo"><br><a>Change the settings for<br><a style="color:#1593eb;" id="dchange"></a></div>
 				<form method="post" id="devicechange" align="center">
-					<ul class="settings-list" align="left">
-						<li><a>Turn on/off&ensp;&ensp;</a>
-						<label class="switch">
-							<input type="checkbox" id="turn-on" name="turn-on">
+					<ul class="settings-list-text" align="left">
+						<li><a>Turn on/off</a></li>
+						<li><a>Notifications</a></li>
+						<li><a>Security mode</a></li>
+					</ul>
+					<ul class="settings-list">
+						<?php
+						$devicename = "hallway";
+						$db = mysqli_connect('localhost', 'root', '', 'eirpad');
+						$stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=?");
+						$stmt->bind_param("ss", $_SESSION['username'], $devicename);
+						$stmt->execute();
+						$result = $stmt -> get_result();
+						$existdev = $result->fetch_assoc();
+						$stmt->close();
+						$init = $existdev['devicename'];
+						echo "<a>".$init."</a>";
+						/*echo "<option value='".$init."'> ".$defaultselect." </option>"; 
+						while ($row = mysqli_fetch_array($result)) {
+							echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 
+						}
+						echo "</select>";*/
+						?>
+						<li><label class="switch">
+							<input type="checkbox" id="turn-on" name="turn_on" value="true">
 							<span class="slider"></span>
 						</label></li>
-						<li><a>Notifications&ensp;</a>
-						<label class="switch">
-							<input type="checkbox" id="notifications" name="notifications">
+						<li><label class="switch">
+							<input type="checkbox" id="notifications" name="notifications" value="true">
 							<span class="slider"></span>
 						</label></li>
-						<li><a>Security mode</a>
-						<label class="switch">
-							<input type="checkbox" id="security-mode" name="security-mode">
+						<li><label class="switch">
+							<input type="checkbox" id="security-mode" name="security_mode" value="true">
 							<span class="slider"></span>
 						</label></li>
-					</ul>	
+					</ul><br><br>
 					<p id=error7 class="reportb">10 characters max</p>
 					<p id=error8 class="reportb">Name already exists</p>
 					<div class="input-field">
 						<input class="formfill" type="text" name="newname" id="newname" required>
-						<label for="newname">New name</label>
+						<label for="newname">Rename Device</label>
 					</div>
 					<a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
 					<div class="clearfix"></div>

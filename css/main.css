@@ -140,17 +140,27 @@ a {
   margin-top: -50%;
 }
 .settings-list {
-  display: flex;
+  display: inline-block;
+  vertical-align: top;
   list-style: none;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-left: 5px;
-  width: 250px;
+  width: 100px;
 }
 .settings-list li {
-  padding: 10px;
+  padding: 10px 0px 10px 0px;
 }
-.settings-list li a {
+.settings-list-text {
+  display: inline-block;
+  vertical-align: top;
+  list-style: none;
+  width: 160px;
+}
+.settings-list-text li {
+  padding: 13px 0px 15px 0px;
+}
+.settings-list-text a {
   color: var(--epblue);
   font-weight: 400;
+}
+.settngsdisabled {
+  color: grey;
 }

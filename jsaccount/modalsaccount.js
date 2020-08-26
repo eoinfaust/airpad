@@ -7,8 +7,7 @@ function clearmodal() {
   $("#error6").hide();
   $("#error7").hide();
   $("#error8").hide();
-  $("#devicename, #deviceid, #devicename1").removeClass("inputerror");
-  $("#devicename, #deviceid, #devicename1").removeClass("inputerror");
+  $("#devicename, #deviceid, #newname").removeClass("inputerror");
 }
 var modaladdev = document.getElementById("deviceaddModal");
 var btnaddev = document.getElementById("deviceaddBtn");

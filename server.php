@@ -13,11 +13,27 @@ if (isset($_POST['change_device'])){
     $devicename = mysqli_real_escape_string($db, $_POST['newname']);
     $oldname = mysqli_real_escape_string($db, $_POST['oldname']);
     $namelen = validIdLen($devicename);
-    $devicerenameerrors = array_fill(0, 3, false);
+    $devicechangeerrors = array_fill(0, 3, false);
+    $mode='off';
+    if (isset($_POST['turn_on'])){
+        if (isset($_POST['notifications'])){
+            if(isset($_POST['security_mode'])){
+                $mode='notsec';
+            }else{
+                $mode='not';
+            }
+        }else{
+            if(isset($_POST['security_mode'])){
+                $mode='sec';
+            }else{
+                $mode='none';
+            }
+        }
+    }
     if (!empty($devicename)){ 
         if($namelen){ 
             array_push($errors, "Device name must contain 10 or fewer characters"); 
-            $devicerenameerrors[0] = true;
+            $devicechangeerrors[0] = true;
         }
         $stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=? LIMIT 1");
         $stmt->bind_param("ss", $username, $devicename);
@@ -27,7 +43,7 @@ if (isset($_POST['change_device'])){
         $stmt->close();
         if ($existdev){
             array_push($errors, "You already have a device with that name");
-            $devicerenameerrors[1] = true;
+            $devicechangeerrors[1] = true;
         }
         $stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=? LIMIT 1");
         $stmt->bind_param("ss", $username, $oldname);
@@ -37,16 +53,32 @@ if (isset($_POST['change_device'])){
         $stmt->close();
         if (!$existdev){
             array_push($errors, "Device doesn't exist");
-            $devicerenameerrors[2] = true;
+            $devicechangeerrors[2] = true;
         }
         if (count($errors) == 0){
-            $stmt = $db->prepare("UPDATE `devices` SET devicename=? WHERE deviceid=?");
-            $stmt->bind_param("ss", $devicename, $existdev['deviceid']);
+            $stmt = $db->prepare("UPDATE `devices` SET devicename=?, setting=? WHERE deviceid=?");
+            $stmt->bind_param("sss", $devicename, $mode, $existdev['deviceid']);
             $stmt->execute();
             $stmt->close();
             echo 'success';
         }else{
-            echo json_encode($devicerenameerrors);
+            echo json_encode($devicechangeerrors);
+        }
+    }else{
+        if (count($errors) == 0){
+            $stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=? LIMIT 1");
+            $stmt->bind_param("ss", $username, $oldname);
+            $stmt->execute();
+            $result = $stmt -> get_result();
+            $existdev = $result->fetch_assoc();
+            $stmt->close();
+            $stmt = $db->prepare("UPDATE `devices` SET setting=? WHERE deviceid=?");
+            $stmt->bind_param("ss", $mode, $existdev['deviceid']);
+            $stmt->execute();
+            $stmt->close();
+            echo 'success';
+        }else{
+            echo json_encode($devicechangeerrors);
         }
     }
 }

@@ -17,22 +17,28 @@ $(document).ready(function () {
       } else {
         var arr = JSON.parse(data);
         if (arr[0]) {
+          $("#deviceid").val("");
           $("#deviceid").addClass("inputerror");
           $("#error1").show();
         } else if (arr[4]) {
+          $("#deviceid").val("");
           $("#deviceid").addClass("inputerror");
           $("#error5").show();
         } else if (arr[5]) {
+          $("#deviceid").val("");
           $("#deviceid").addClass("inputerror");
           $("#error6").show();
         }
         if (arr[1]) {
+          $("#devicename").val("");
           $("#devicename").addClass("inputerror");
           $("#error2").show();
         } else if (arr[2]) {
+          $("#devicename").val("");
           $("#devicename").addClass("inputerror");
           $("#error3").show();
         } else if (arr[3]) {
+          $("#devicename").val("");
           $("#devicename").addClass("inputerror");
           $("#error4").show();
         }
