@@ -232,7 +232,7 @@
 					$stmt->execute();
 					$result = $stmt -> get_result();
 					$stmt->close();
-					$defaultselect = 'my devices';
+					$defaultselect = "my devices";
 					if(isset($_COOKIE['activedevice'])) {
 						$defaultselect = $_COOKIE['activedevice'];
 					}
