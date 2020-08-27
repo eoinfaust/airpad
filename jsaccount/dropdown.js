@@ -1,5 +1,4 @@
-$("#devicechangeBtn").hide();
-$("#devicedeleteBtn").hide();
+$(window).on("load", addBtns);
 var x, i, j, l, ll, selElmnt, a, b, c;
 x = document.getElementsByClassName("custom-select");
 l = x.length;
@@ -32,13 +31,13 @@ for (i = 0; i < l; i++) {
           this.setAttribute("class", "same-as-selected");
           break;
         }
-        $("#devicechangeBtn").show();
-        $("#devicedeleteBtn").show();
       }
       h.click();
       document.getElementById("dnamedel").innerHTML = document.getElementById(
         "dchange"
       ).innerHTML = $("#devicechosen :selected").text();
+      createCookie("activedevice", $("#devicechosen :selected").val(), "1");
+      window.location.href = "account.php";
     });
     b.appendChild(c);
   }
@@ -80,4 +79,27 @@ function up() {
     var dop = document.getElementById("srt").value;
   }
   alert(dop);
+}
+function createCookie(name, value, days) {
+  var expires;
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toGMTString();
+  } else {
+    expires = "";
+  }
+  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+function addBtns(jQuery) {
+  if ($("#devicechosen :selected").val() != "my devices") {
+    document.getElementById("dnamedel").innerHTML = document.getElementById(
+      "dchange"
+    ).innerHTML = $("#devicechosen :selected").text();
+    $("#devicechangeBtn").show();
+    $("#devicedeleteBtn").show();
+  } else {
+    $("#devicechangeBtn").hide();
+    $("#devicedeleteBtn").hide();
+  }
 }

@@ -127,34 +127,89 @@
 					</ul>
 					<ul class="settings-list">
 						<?php
-						$devicename = "hallway";
-						$db = mysqli_connect('localhost', 'root', '', 'eirpad');
-						$stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=?");
-						$stmt->bind_param("ss", $_SESSION['username'], $devicename);
-						$stmt->execute();
-						$result = $stmt -> get_result();
-						$existdev = $result->fetch_assoc();
-						$stmt->close();
-						$init = $existdev['devicename'];
-						echo "<a>".$init."</a>";
-						/*echo "<option value='".$init."'> ".$defaultselect." </option>"; 
-						while ($row = mysqli_fetch_array($result)) {
-							echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 
+						if(isset($_COOKIE['activedevice'])) {
+							$device = $_COOKIE['activedevice'];
+							$db = mysqli_connect('localhost', 'root', '', 'eirpad');
+							$stmt = $db->prepare("SELECT * FROM devices WHERE username=? AND devicename=?");
+							$stmt->bind_param("ss", $_SESSION['username'], $device);
+							$stmt->execute();
+							$result = $stmt -> get_result();
+							$existdev = $result->fetch_assoc();
+							$stmt->close();
+							echo "<a>hello ".$existdev['setting']." </a>";
+							if($existdev['setting']='none'){
+								echo "
+								<li><label class='switch'>
+								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+								<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='notifications' name='notifications' value='true'>
+									<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
+									<span class='slider'></span>
+								</label></li>";
+							}else if($existdev['setting']='not'){
+								echo "
+								<li><label class='switch'>
+								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+								<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='notifications' name='notifications' value='true' checked>
+									<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
+									<span class='slider'></span>
+								</label></li>";
+							}else if($existdev['setting']='notsec'){
+								echo "
+								<li><label class='switch'>
+								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+								<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='notifications' name='notifications' value='true' checked>
+									<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='security-mode' name='security_mode' value='true' checked>
+									<span class='slider'></span>
+								</label></li>";
+							}else if ($existdev['setting']='sec'){
+								echo "
+								<li><label class='switch'>
+								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+								<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='notifications' name='notifications' value='true'>
+									<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='security-mode' name='security_mode' value='true' checked>
+									<span class='slider'></span>
+								</label></li>";
+							}else{
+								echo "
+								<li><label class='switch'>
+								<input type='checkbox' id='turn-on' name='turn_on' value='true'>
+								<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='notifications' name='notifications' value='true'>
+									<span class='slider'></span>
+								</label></li>
+								<li><label class='switch'>
+									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
+									<span class='slider'></span>
+								</label></li>";
+							}
 						}
-						echo "</select>";*/
 						?>
-						<li><label class="switch">
-							<input type="checkbox" id="turn-on" name="turn_on" value="true">
-							<span class="slider"></span>
-						</label></li>
-						<li><label class="switch">
-							<input type="checkbox" id="notifications" name="notifications" value="true">
-							<span class="slider"></span>
-						</label></li>
-						<li><label class="switch">
-							<input type="checkbox" id="security-mode" name="security_mode" value="true">
-							<span class="slider"></span>
-						</label></li>
 					</ul><br><br>
 					<p id=error7 class="reportb">10 characters max</p>
 					<p id=error8 class="reportb">Name already exists</p>
@@ -178,12 +233,18 @@
 					$stmt->execute();
 					$result = $stmt -> get_result();
 					$stmt->close();
-					$init = '0';
 					$defaultselect = 'my devices';
+					if(!isset($_COOKIE['activedevice'])) {
+						$defaultselect = 'my devices';
+					 }else{
+						$defaultselect = $_COOKIE['activedevice'];
+					 }
 					echo "<select id='devicechosen'>";
-					echo "<option value='".$init."'> ".$defaultselect." </option>"; 
+					echo "<option value='".$defaultselect."'> ".$defaultselect." </option>"; 
 					while ($row = mysqli_fetch_array($result)) {
-						echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "&nbsp;</option>"; 
+						if($row['devicename'] != $_COOKIE['activedevice']){
+							echo "<option value='" .$row['devicename']."'> ".$row['devicename'] . "</option>"; 
+						}
 					}
 					echo "</select>";
 					?>

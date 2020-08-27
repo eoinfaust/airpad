@@ -60,7 +60,7 @@ if (isset($_POST['change_device'])){
             $stmt->bind_param("sss", $devicename, $mode, $existdev['deviceid']);
             $stmt->execute();
             $stmt->close();
-            echo 'success';
+            echo 'successren';
         }else{
             echo json_encode($devicechangeerrors);
         }
