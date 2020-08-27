@@ -149,7 +149,7 @@ if (isset($_POST['add_device'])) {
         $deviceadderrors[5] = true;
     }
     if (count($errors) == 0){
-        $stmt = $db->prepare("UPDATE `devices` SET devicename=?, username=? WHERE deviceid=?");
+        $stmt = $db->prepare("UPDATE `devices` SET devicename=?, username=?, setting='not' WHERE deviceid=?");
         $stmt->bind_param("sss", $devicename, $username, $deviceid);
         $stmt->execute();
         $stmt->close();

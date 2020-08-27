@@ -136,8 +136,7 @@
 							$result = $stmt -> get_result();
 							$existdev = $result->fetch_assoc();
 							$stmt->close();
-							echo "<a>hello ".$existdev['setting']." </a>";
-							if($existdev['setting']='none'){
+							if($existdev['setting']==='none'){
 								echo "
 								<li><label class='switch'>
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
@@ -151,7 +150,7 @@
 									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
 									<span class='slider'></span>
 								</label></li>";
-							}else if($existdev['setting']='not'){
+							}else if($existdev['setting']==='not'){
 								echo "
 								<li><label class='switch'>
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
@@ -165,7 +164,7 @@
 									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
 									<span class='slider'></span>
 								</label></li>";
-							}else if($existdev['setting']='notsec'){
+							}else if($existdev['setting']==='notsec'){
 								echo "
 								<li><label class='switch'>
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
@@ -179,7 +178,7 @@
 									<input type='checkbox' id='security-mode' name='security_mode' value='true' checked>
 									<span class='slider'></span>
 								</label></li>";
-							}else if ($existdev['setting']='sec'){
+							}else if ($existdev['setting']==='sec'){
 								echo "
 								<li><label class='switch'>
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
@@ -234,11 +233,9 @@
 					$result = $stmt -> get_result();
 					$stmt->close();
 					$defaultselect = 'my devices';
-					if(!isset($_COOKIE['activedevice'])) {
-						$defaultselect = 'my devices';
-					 }else{
+					if(isset($_COOKIE['activedevice'])) {
 						$defaultselect = $_COOKIE['activedevice'];
-					 }
+					}
 					echo "<select id='devicechosen'>";
 					echo "<option value='".$defaultselect."'> ".$defaultselect." </option>"; 
 					while ($row = mysqli_fetch_array($result)) {

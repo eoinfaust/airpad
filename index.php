@@ -19,6 +19,9 @@ session_start();?>
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.cookie ="activedevice=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    </script>
   </head>
   <body>
     <nav>

@@ -15,6 +15,8 @@ $(document).ready(function () {
     });
     promise.then(function (data) {
       if (data === "success") {
+        document.cookie =
+          "activedevice=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
         window.location.href = "account.php";
       } else {
         alert("An unknown error has occurred; please contact support.");
