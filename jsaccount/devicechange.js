@@ -40,3 +40,38 @@ $(document).ready(function () {
 $("#change_device").click(function () {
   $("#newname").removeAttr("required");
 });
+
+$(window).on("load", validate);
+function validate() {
+  if ($("#turn-on").is(":checked")) {
+    $("#notifications").show();
+    $("#secswitch").show();
+    $("#secswitch1").show();
+    $("#notswitch").show();
+    $("#notswitch1").show();
+  } else {
+    $("#notifications").hide();
+    $("#secswitch").hide();
+    $("#secswitch1").hide();
+    $("#notswitch").hide();
+    $("#notswitch1").hide();
+  }
+}
+
+$(document).ready(function () {
+  $("#turn-on").change(function () {
+    if (this.checked) {
+      $("#notifications").show();
+      $("#secswitch").show();
+      $("#secswitch1").show();
+      $("#notswitch").show();
+      $("#notswitch1").show();
+    } else {
+      $("#notifications").hide();
+      $("#secswitch").hide();
+      $("#secswitch1").hide();
+      $("#notswitch").hide();
+      $("#notswitch1").hide();
+    }
+  });
+});

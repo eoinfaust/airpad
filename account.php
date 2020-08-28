@@ -122,8 +122,8 @@
 				<form method="post" id="devicechange" align="center">
 					<ul class="settings-list-text" align="left">
 						<li><a>Turn on/off</a></li>
-						<li><a>Notifications</a></li>
-						<li><a>Security mode</a></li>
+						<li id='notswitch1'><a>Notifications</a></li>
+						<li id='secswitch1'><a>Security mode</a></li>
 					</ul>
 					<ul class="settings-list">
 						<?php
@@ -142,11 +142,11 @@
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
 								<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true'>
 									<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='secswitch'><label class='switch'>
 									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
 									<span class='slider'></span>
 								</label></li>";
@@ -156,11 +156,11 @@
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
 								<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true' checked>
 									<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='secswitch'><label class='switch'>
 									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
 									<span class='slider'></span>
 								</label></li>";
@@ -170,11 +170,11 @@
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
 								<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true' checked>
 									<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='secswitch'><label class='switch'>
 									<input type='checkbox' id='security-mode' name='security_mode' value='true' checked>
 									<span class='slider'></span>
 								</label></li>";
@@ -184,11 +184,11 @@
 								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
 								<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true'>
 									<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='secswitch'><label class='switch'>
 									<input type='checkbox' id='security-mode' name='security_mode' value='true' checked>
 									<span class='slider'></span>
 								</label></li>";
@@ -198,11 +198,11 @@
 								<input type='checkbox' id='turn-on' name='turn_on' value='true'>
 								<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true'>
 									<span class='slider'></span>
 								</label></li>
-								<li><label class='switch'>
+								<li id='secswitch'><label class='switch'>
 									<input type='checkbox' id='security-mode' name='security_mode' value='true'>
 									<span class='slider'></span>
 								</label></li>";
