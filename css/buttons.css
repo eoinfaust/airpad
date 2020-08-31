@@ -117,12 +117,12 @@
 .tooltip .tooltiptext {
   visibility: hidden;
   cursor: pointer;
-  background-color: black;
-  color: #fff;
-  text-align: center;
+  background-color: var(--content);
+  color: var(--bg);
+  text-align: left;
   border-radius: 6px;
   padding: 15px 15px 15px 15px;
-  width: 260px;
+  width: 240px;
   bottom: 100%;
   left: 50%;
   margin-left: -180px;

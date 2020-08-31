@@ -94,8 +94,8 @@
 						<label for="devicename">Device name</label>
 					</div>
 					<div class="tooltip" ontouchstart>Need help? (Hold)
-						<span class="tooltiptext">You can find device IDs on the underside of each device. Device IDs are 10 characters long, and are a combination of letters and numbers.<br><br>
-						You can choose a 10-character name to help you identify this device. This can be changed later.<br><br>
+						<span class="tooltiptext">Device IDs are found on the underside of each device. Device IDs are 10 characters long, and are all alphanumeric.<br><br>
+						Choose a 10-character name to help you identify this device. This can be changed later.<br><br>
 						<b>Need assistance?</b> Please contact support at the bottom of this page.</span>
 					</div>
           			<div class="clearfix"></div>
