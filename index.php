@@ -5,7 +5,6 @@ session_start();?>
   <head>
     <title>eirpad | Home</title>
     <link rel="stylesheet" href="css/main.css?version=1">
-    <link rel="stylesheet" href="css/dropdowns.css?version=1">
     <link rel="stylesheet" href="css/buttons.css?version=1">
     <link rel="stylesheet" href="css/input.css?version=1">
     <link rel="stylesheet" href="css/navbar.css?version=1">
@@ -123,7 +122,11 @@ session_start();?>
           <input class="formfill" type="password" name="password2" id="password2" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="password2">Confirm password</label>
           </div>
-          <a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
+          <div class="tooltip" ontouchstart>Need help? (Hold)
+            <span class="tooltiptext">You can register an account at any time, but need a device to access most features. <br><br><b>Usernames</b> must be unique to your account, alphanumeric, and between 8 and 16 characters in length.
+            <br><br><b>Emails</b> must be unique to your account, and will be used for verification and contact purposes.<br><br><b>Passwords</b> must be between 8-16 characters, and can contain numbers, letters, and special characters.
+            <br><br><b>Need assistance?</b> Please contact support at the bottom of this page.</span>
+          </div>
           <div class="clearfix"></div>
           <input type="submit" class="button" name="reg_user" id="reg_user" value="Register">
         </form>
@@ -136,26 +139,24 @@ session_start();?>
         <a class="link" id="signinmodBtn1">Sign in <i class="fa fa-chevron-right"></i></a></p>
       </div>
     </div>
-    <div class="mainpage";>
-      <div class="clearfix">
-        <p class="textright"><img class="imgleft" src="https://via.placeholder.com/400" alt="eirpad">
-          <br><br>The eirpad is a privacy-oriented home monitoring device, for short-term rental hosts and property managers.</p>
-          <p class="textright">The eirpad's plug-and-play design contains temperature, humidity, and noise sensors, for your peace of mind.</p>
-          <p class="textright">Its privacy-oriented design records noise levels, with no intrusive microphones to pick up conversations.</p>
-      </div>
-      <div class="clearfix">
-        <p class="textleft"><br><br><img class="imgright" src="https://via.placeholder.com/400" alt="eirpad">
-          <br><br>Register with our web app for real time updates through the cloud, and view 7 days of data for all of your registered eirpad devices.</p>
-          <p class="textleft">Receive notifications at high humidity levels, upon tampering, or when sustained noise levels exceed a desired threshold.</p>
-          <p class="textleft">A comprehensive solution for noise and environmental monitoring, and antisocial behaviour prevention, for privacy-conscious hosts.</p>
-      </div>
+    <div class="mainpage">
+      <p class="textright"><img class="imgleft" src="https://via.placeholder.com/400" alt="eirpad">
+      <br><br>The eirpad is a privacy-oriented home monitoring device, for short-term rental hosts and property managers.</p>
+      <p class="textright">The eirpad's plug-and-play design contains temperature, humidity, and noise sensors, for your peace of mind.</p>
+      <p class="textright">Its privacy-oriented design records noise levels, with no intrusive microphones to pick up conversations.</p>
+      <div class="clearfix"></div>
+      <p class="textleft"><br><br><img class="imgright" src="https://via.placeholder.com/400" alt="eirpad">
+      <br><br>Register with our web app for real time updates through the cloud, and view 7 days of data for all of your registered eirpad devices.</p>
+      <p class="textleft">Receive notifications at high humidity levels, upon tampering, or when sustained noise levels exceed a desired threshold.</p>
+      <p class="textleft">A comprehensive solution for noise and environmental monitoring, and antisocial behaviour prevention, for privacy-conscious hosts.</p>
+      <div class="clearfix"></div>
       <p align="center" >
       <a><br>Available for purchase online.&ensp;</a>
       <a class="link" href="https://www.amazon.com/" style="text-decoration: none;" >Buy <i class="fa fa-chevron-right" style="font-size:20px"></i></a>
       <br><br><a>Have a question or problem we can help you with?&ensp;</a>
       <a class="link" href="support.php" style="text-decoration: none";>Get in touch <i class="fa fa-chevron-right" style="font-size:20px"></i></a></p>
-      <br>
-    </div><br>
+      <br><br>
+    </div>
 		<div class="footer" align="center">
 			<a class="small link" href="index.php"><i class="fa fa-home"></i> home&ensp;</a>
 			<a class="small link" href="support.php"><i class="fa fa-question"></i> support&ensp;</a>

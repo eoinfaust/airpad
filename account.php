@@ -16,11 +16,9 @@
 	<head>
 		<title>eirpad | My Account</title>
 		<link rel="stylesheet" href="css/main.css?version=1">
-		<link rel="stylesheet" href="css/dropdowns.css?version=1">
 		<link rel="stylesheet" href="css/buttons.css?version=1">
 		<link rel="stylesheet" href="css/input.css?version=1">
 		<link rel="stylesheet" href="css/navbar.css?version=1">
-		<link rel="stylesheet" href="css/switches.css?version=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 		<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -95,7 +93,11 @@
 						<input class="formfill" type="text" name="devicename" id="devicename" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
 						<label for="devicename">Device name</label>
 					</div>
-					<a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
+					<div class="tooltip" ontouchstart>Need help? (Hold)
+						<span class="tooltiptext">You can find device IDs on the underside of each device. Device IDs are 10 characters long, and are a combination of letters and numbers.<br><br>
+						You can choose a 10-character name to help you identify this device. This can be changed later.<br><br>
+						<b>Need assistance?</b> Please contact support at the bottom of this page.</span>
+					</div>
           			<div class="clearfix"></div>
 					<input type="submit" class="button" name="add_device" id="add_device" value="Add">
 				</form>
@@ -139,8 +141,8 @@
 							if($existdev['setting']==='none'){
 								echo "
 								<li><label class='switch'>
-								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
-								<span class='slider'></span>
+									<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+									<span class='slider'></span>
 								</label></li>
 								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true'>
@@ -153,8 +155,8 @@
 							}else if($existdev['setting']==='not'){
 								echo "
 								<li><label class='switch'>
-								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
-								<span class='slider'></span>
+									<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+									<span class='slider'></span>
 								</label></li>
 								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true' checked>
@@ -167,8 +169,8 @@
 							}else if($existdev['setting']==='notsec'){
 								echo "
 								<li><label class='switch'>
-								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
-								<span class='slider'></span>
+									<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+									<span class='slider'></span>
 								</label></li>
 								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true' checked>
@@ -181,8 +183,8 @@
 							}else if ($existdev['setting']==='sec'){
 								echo "
 								<li><label class='switch'>
-								<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
-								<span class='slider'></span>
+									<input type='checkbox' id='turn-on' name='turn_on' value='true' checked>
+									<span class='slider'></span>
 								</label></li>
 								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true'>
@@ -195,8 +197,8 @@
 							}else{
 								echo "
 								<li><label class='switch'>
-								<input type='checkbox' id='turn-on' name='turn_on' value='true'>
-								<span class='slider'></span>
+									<input type='checkbox' id='turn-on' name='turn_on' value='true'>
+									<span class='slider'></span>
 								</label></li>
 								<li id='notswitch'><label class='switch'>
 									<input type='checkbox' id='notifications' name='notifications' value='true'>
@@ -216,7 +218,12 @@
 						<input class="formfill" type="text" name="newname" id="newname" required>
 						<label for="newname">Rename Device</label>
 					</div>
-					<a class= forgotlink href="support.php"><i class="fa fa-question"></i> Get help</a>
+					<div class="tooltip" ontouchstart>Need help? (Hold)
+						<span class="tooltiptext">You can rename your device here - name length is limited to 10 characters, and cannot be the same as an existing device registered to your account.<br><br>
+						If you turn this device off, you will no longer receive alerts; its data will not be recorded in our servers. <br><br>
+						If you enable notifications, you will receive monitoring alerts for this device. If you enable security mode, you will receive security alerts if anomalous sound is detected.<br><br>
+						<b>Need assistance?</b> Please contact support at the bottom of this page.</span>
+					</div>
 					<div class="clearfix"></div>
 					<input type="submit" class="button" name="change_device" id="change_device" value="Save changes">
 				</form>
