@@ -1,5 +1,39 @@
 <?php
-session_start();?>
+session_start();
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  unset($_SESSION['verified']);
+  header("location: index.php");
+}
+if (isset($_SESSION['username'])){
+  if(!$_SESSION['verified']){
+    if(isset($_GET['veremail']) && isset($_GET['vertoken'])){
+      $db = mysqli_connect('localhost', 'root', '', 'eirpad');
+      $stmt = $db->prepare("SELECT * FROM users WHERE email=? LIMIT 1");
+      $stmt->bind_param("s", $_GET['veremail']);
+      $stmt->execute();
+      $result = $stmt -> get_result();
+      $existacc = $result->fetch_assoc();
+      $stmt->close();
+      if ($existacc){
+          if ($_GET['vertoken'] === $existacc['token']){
+            $stmt = $db->prepare("UPDATE `users` SET verified=true WHERE email=?");
+            $stmt->bind_param("s", $_GET['veremail']);
+            $stmt->execute();
+            $stmt->close();
+            $_SESSION['verified']=true;
+            header("location: account.php");
+          }else{
+            var_dump('Verification error; please contact support.');
+          }
+      }else{
+        var_dump('Verification error; please contact support.');
+      }
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -130,6 +164,7 @@ session_start();?>
           <div class="clearfix"></div>
           <input type="submit" class="button" name="reg_user" id="reg_user" value="Register">
         </form>
+        <div align=center id="loading" style='display: block;margin-top:10px;margin-left: auto;margin-right: auto;width:30%;'><img src="icon/ajax-loader.gif"></img></div>
         <p align=center>
           <a class="tos" style="text-align:left;">By clicking "Register, you agree to our </a><a class="tos" href="terms">privacy policy</a><a class="tos">.</a><br><br>
         </p>
@@ -138,6 +173,18 @@ session_start();?>
         <a class="link" id="signinmodBtn1">Sign in <i class="fa fa-chevron-right"></i></a></p>
       </div>
     </div>
+    <?php
+      if (isset($_SESSION['username'])){
+        if(!$_SESSION['verified']){
+          echo "
+          <div class='verifybox'>
+          <a>You must verify your email address before you can access your account page.</a><br>
+          <a>You can visit the </a><a class='link' href='settings.php'>settings</a><a> page to change your registered email address, or to send a new verification link.</a>
+          </div>
+          ";
+        }
+      }
+    ?>
     <div class="mainpage">
       <p class="textright"><img class="imgleft" src="https://via.placeholder.com/400" alt="eirpad">
       <br><br>The eirpad is a privacy-oriented home monitoring device, for short-term rental hosts and property managers.</p>

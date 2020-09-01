@@ -1,15 +1,18 @@
 <?php
-
-require 'config/constants.php';
-require 'emailController.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
 
 session_start();
-
 $username = "";
 $email    = "";
 $deviceid = "";
 $devicename   = "";
 $report = "";
+$db = mysqli_connect('localhost', 'root', '', 'eirpad');
+$errors = array();
+
 
 if (isset($_POST['change_device'])){
     $username = $_SESSION['username'];
@@ -218,19 +221,90 @@ if (isset($_POST['reg_user'])){
         $regerrors[10] = true;
         }
     }
-    if (count($errors) == 0){ 
-        $verified = false;
+    if (count($errors) == 0){
         $token = bin2hex(random_bytes(50));
         $hash = password_hash($password1, PASSWORD_BCRYPT);
-        $stmt = $db->prepare("INSERT INTO `users` (`username`, `email`, `password`, `token`, `verified`) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssb", $username, $email, $hash, $token, $verified);
+        $stmt = $db->prepare("INSERT INTO `users` (`username`, `email`, `password`, `token`, `verified`) VALUES (?, ?, ?, ?, false)");
+        $stmt->bind_param("ssss", $username, $email, $hash, $token);
         $stmt->execute();
         $stmt->close();
-        $_SESSION['username'] = $username;
-        $_SESSION['verified'] = $existacc['verified'];
-        sendVerificationEmail($email, $token);
-        echo ('success');
-
+        $mail = new PHPMailer(true);
+        try {
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'eirpadcs@gmail.com';                   // SMTP username
+            $mail->Password   = 'eirCSPADWORD';                         // SMTP password
+            $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->setFrom('eirpadcs@gmail.com', 'eirpad Support');
+            $mail->addAddress($email);                                  // Add a recipient
+            $mail->isHTML(true);                                        // Set email format to HTML
+            $mail->Subject = 'Verify your email | eirpad';
+            $body = '<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>Verify Email</title>
+                <style>
+                    body {
+                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                        Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                    }
+                    .button {
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: #1593eb;
+                        background: transparent;
+                        border: 2px solid #1593eb;
+                        border-radius: 3px;
+                        padding-left: 1.5em;
+                        padding-right: 1.5em;
+                        padding-bottom: 0.5em;
+                        padding-top: 0.5em;
+                        font-size: 18px;
+                        font-weight: 400;
+                        box-shadow: 0px 12px 20px 2px rgba(0, 0, 0, 0.12);
+                        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+                        transition: 0.2s;
+                        width: auto;
+                        margin-left:150px;
+                        margin-top:50px;margin-bottom:50px;
+                        }
+                        .button:hover {
+                        filter: brightness(1.3);
+                        box-shadow: 0px 12px 30px 2px rgba(0, 0, 0, 0.25);
+                        transition: 0.2s;
+                    }
+                </style>
+            </head>
+            <body>
+                <div style="display:inline-block;">
+                    <p align=left>
+                        <h1>Thank you for registering with eirpad.</h1><br>
+                        Please click the link below to verify your email and be redirected to our site.
+                    </p><br>
+                    <p><a class = "button" align=center href="http://localhost/index.php?veremail='.$email.'&vertoken='.$token.'">Verify</a></p><br>
+                    <p align=left>
+                        Along with your device, this will allow your account to access all site functionalities.<br>
+                        If you did not register an account with eirpad recently, you can safely ignore this email.
+                    </p>
+                    <p align=left>
+                        Sent by the eirpad team.
+                    </p>
+                </div>
+            </body>
+            </html>';
+            $mail->Body = $body; 
+            $mail->AltBody = strip_tags($body);
+            $mail->send();
+            $_SESSION['verified'] = false;
+            $_SESSION['username'] = $username;
+            echo 'success';
+        } catch (Exception $e) {
+            echo "mailfail";
+        }
     }else{
         echo json_encode($regerrors);
     }

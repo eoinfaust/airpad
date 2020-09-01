@@ -3,10 +3,15 @@
   	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: index.php');
+	  }
+	  if (!$_SESSION['verified']) {
+		$_SESSION['msg'] = "Your email must be verified to access this page.";
+		header('location: index.php');
   	}
   	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['username']);
+		unset($_SESSION['verified']);
 		header("location: index.php");
   	}
 ?>

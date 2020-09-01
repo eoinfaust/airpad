@@ -1,6 +1,8 @@
 clearmodal();
+$("#loading").hide();
 $(document).ready(function () {
   $("#registerform").submit(function (e) {
+    $("#loading").show();
     clearmodal();
     e.preventDefault();
     var data = $("#registerform").serializeArray();
@@ -13,8 +15,11 @@ $(document).ready(function () {
     });
     $("#password1, #password2").val("");
     promise.then(function (data) {
+      $("#loading").hide();
       if (data === "success") {
         window.location.href = "index.php";
+      } else if (data === "mailfail") {
+        alert("An unknown error occured; please contact support.");
       } else {
         var arr = JSON.parse(data);
         if (arr[0]) {
@@ -64,3 +69,11 @@ $(document).ready(function () {
     });
   });
 });
+$("#loading").hide();
+$("#loading")
+  .bind("ajaxStart", function () {
+    $(this).show();
+  })
+  .bind("ajaxStop", function () {
+    $(this).hide();
+  });

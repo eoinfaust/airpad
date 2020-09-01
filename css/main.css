@@ -4,9 +4,9 @@
   --bgnav: #fbf0d9;
   --epblue: #1593eb;
   --nav-size: 60px;
+  overflow-x: hidden;
 }
 body {
-  box-sizing: border-box;
   background-color: var(--bg);
   margin: 0%;
   padding-bottom: 1%;
@@ -27,6 +27,15 @@ body {
   padding-right: 8%;
   margin-top: 0%;
   margin-bottom: -1%;
+}
+.verifybox {
+  text-align: center;
+  background-color: rgba(255, 166, 0, 0.575);
+  color: var(--content);
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0;
 }
 a {
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
