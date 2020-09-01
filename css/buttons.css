@@ -129,14 +129,16 @@
   position: absolute;
   z-index: 1;
 }
-.tooltip:active .tooltiptext {
-  visibility: visible;
-}
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
-.tooltip:focus .tooltiptext {
-  visibility: visible;
+@media screen and (max-width: 768px) {
+  .tooltip {
+    display: none;
+  }
+  .tooltip .tooltiptext {
+    display: none;
+  }
 }
 .switch {
   position: relative;

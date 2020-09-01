@@ -271,11 +271,10 @@
 			<a class="small link" href="support.php"><i class="fa fa-question"></i> support&ensp;</a>
 			<a class="small">&ensp;&copy; 2020 eirpad</a></p>
 		</div>
-		<script src="jsaccount/dropdown.js"></script>
-		<script src="jsaccount/modalsaccount.js"></script>
-		<script src="jsaccount/deviceadd.js"></script>
-		<script src="jsaccount/devicedelete.js"></script>
-		<script src="jsaccount/devicechange.js"></script>
-		<script src="js/navbar.js"></script>
+		<script src="js/dropdown.js"></script>
+		<script src="js/modalsaccount.js"></script>
+		<script src="js/deviceadd.js"></script>
+		<script src="js/devicedelete.js"></script>
+		<script src="js/devicechange.js"></script>
 	</body>
 </html>

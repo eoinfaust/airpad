@@ -13,6 +13,81 @@ $report = "";
 $db = mysqli_connect('localhost', 'root', '', 'eirpad');
 $errors = array();
 
+if (isset($_POST['contact'])){
+    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $message = mysqli_real_escape_string($db, $_POST['message']);
+    $contacterrors = array_fill(0, 6, false);
+    if (empty($name)) { 
+        array_push($errors, "Username");
+        $contacterrors[0] = true;
+    } else if(strlen($name)>100){
+        array_push($errors, "Username Length");
+        $contacterrors[5] = true;
+    }
+    if (empty($email)){ 
+        array_push($errors, "Email");
+        $contacterrors[1] = true;
+    }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){ 
+        array_push($errors, "Email invalid"); 
+        $contacterrors[2] = true;
+    }
+    if (empty($message)){ 
+        array_push($errors, "Message"); 
+        $contacterrors[3] = true;
+    }
+    if (strlen($message)>500){ 
+        array_push($errors, "Messag Length"); 
+        $contacterrors[4] = true;
+    }
+    if (count($errors) == 0){
+        $mail = new PHPMailer(true);
+        try {
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'eirpadcs@gmail.com';                   // SMTP username
+            $mail->Password   = 'eirCSPADWORD';                         // SMTP password
+            $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->setFrom('eirpadcs@gmail.com', 'eirpad Support');
+            $mail->addAddress('eirpadcs@gmail.com');                                  // Add a recipient
+            $mail->isHTML(true);                                        // Set email format to HTML
+            $mail->Subject = 'New Contact | eirpad';
+            $body = '<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>Verify Email</title>
+                <style>
+                    body {
+                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                        Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                    }
+                </style>
+            </head>
+            <body>
+                <div style="display:inline-block;">
+                    <p align=left>
+                        <h1>A new query has been received.</h1><br>
+                        Message from '.$name.' at '.$email.'.
+                    </p><br>
+                    <p>'.$message.'</p>
+                </div>
+            </body>
+            </html>';
+            $mail->Body = $body; 
+            $mail->AltBody = strip_tags($body);
+            $mail->send();
+            echo 'success';
+        } catch (Exception $e) {
+            echo "mailfail";
+        }
+    }else{
+        echo json_encode($contacterrors);
+    }
+}
 
 if (isset($_POST['change_device'])){
     $username = $_SESSION['username'];
@@ -271,11 +346,6 @@ if (isset($_POST['reg_user'])){
                         width: auto;
                         margin-left:150px;
                         margin-top:50px;margin-bottom:50px;
-                        }
-                        .button:hover {
-                        filter: brightness(1.3);
-                        box-shadow: 0px 12px 30px 2px rgba(0, 0, 0, 0.25);
-                        transition: 0.2s;
                     }
                 </style>
             </head>
@@ -300,6 +370,7 @@ if (isset($_POST['reg_user'])){
             $mail->AltBody = strip_tags($body);
             $mail->send();
             $_SESSION['verified'] = false;
+            $_SESSION['email'] = $email;
             $_SESSION['username'] = $username;
             echo 'success';
         } catch (Exception $e) {
@@ -325,7 +396,7 @@ if (isset($_POST['signin_user'])){
     }
     if (count($errors) == 0){
         $stmt = $db->prepare("SELECT * FROM users WHERE username=? OR email=? LIMIT 1");
-        $stmt->bind_param("ss", $username, $email);
+        $stmt->bind_param("ss", $username, $username);
         $stmt->execute();
         $result = $stmt -> get_result();
         $existacc = $result->fetch_assoc();
@@ -333,7 +404,8 @@ if (isset($_POST['signin_user'])){
         if (mysqli_num_rows($result) == 1){
             $resultstring = $existacc['password'];
             if(password_verify($password, $resultstring)){
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $existacc['username'];
+                $_SESSION['email'] = $existacc['email'];
                 $_SESSION['verified'] = $existacc['verified'];
                 echo ('success');
             }else{

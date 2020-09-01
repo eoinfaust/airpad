@@ -2,7 +2,7 @@
   width: 65%;
   background-color: var(--bg);
   color: var(--content);
-  font-weight: 300;
+  font-weight: 200;
   font-size: 18px;
   letter-spacing: 1px;
   padding: 2% 4%;
@@ -19,7 +19,14 @@
 input:focus ~ label,
 input:valid ~ label {
   font-size: 14px;
-  top: -29%;
+  top: -18px;
+  left: 14%;
+  color: var(--epblue);
+}
+textarea:focus ~ label,
+textarea:valid ~ label {
+  font-size: 14px;
+  top: -18px;
   left: 14%;
   color: var(--epblue);
 }

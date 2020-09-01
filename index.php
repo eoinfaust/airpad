@@ -156,7 +156,7 @@ if (isset($_SESSION['username'])){
           <input class="formfill" type="password" name="password2" id="password2" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
             <label for="password2">Confirm password</label>
           </div>
-          <div class="tooltip" ontouchstart>Help
+          <div class="tooltip">Help
             <span class="tooltiptext">You can register an account at any time, but need a device to access most features. <br><br><b>Usernames</b> must be unique to your account, alphanumeric, and between 8 and 16 characters in length.
             <br><br><b>Emails</b> must be unique to your account, and will be used for verification and contact purposes.<br><br><b>Passwords</b> must be between 8-16 characters, and can contain numbers, letters, and special characters.
             <br><br><b>Need further assistance?</b> Please use a support form to get in touch.</span>
@@ -166,7 +166,7 @@ if (isset($_SESSION['username'])){
         </form>
         <div align=center id="loading" style='display: block;margin-top:10px;margin-left: auto;margin-right: auto;width:30%;'><img src="icon/ajax-loader.gif"></img></div>
         <p align=center>
-          <a class="tos" style="text-align:left;">By clicking "Register, you agree to our </a><a class="tos" href="terms">privacy policy</a><a class="tos">.</a><br><br>
+          <a class="tos" style="text-align:left;">By registering, you agree to our </a><a class="tos" href="terms">privacy policy</a><a class="tos">.</a><br><br>
         </p>
         <p align="center" >
         <a>Have an account?&ensp;</a>
@@ -208,9 +208,8 @@ if (isset($_SESSION['username'])){
 			<a class="small link" href="support.php"><i class="fa fa-question"></i> support&ensp;</a>
 			<a class="small">&ensp;&copy; 2020 eirpad</a></p>
 		</div>
-    <script src="jsindex/modalsindex.js"></script>
-    <script src="jsindex/signin.js"></script>
-    <script src="jsindex/register.js"></script>
-    <script src="js/navbar.js"></script>
+    <script src="js/modalsindex.js"></script>
+    <script src="js/signin.js"></script>
+    <script src="js/register.js"></script>
   </body>
 </html>
