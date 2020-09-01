@@ -132,6 +132,12 @@
 .tooltip:active .tooltiptext {
   visibility: visible;
 }
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip:focus .tooltiptext {
+  visibility: visible;
+}
 .switch {
   position: relative;
   display: flex;

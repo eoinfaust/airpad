@@ -1,12 +1,15 @@
 <?php
+
+require 'config/constants.php';
+require 'emailController.php';
+
 session_start();
+
 $username = "";
 $email    = "";
 $deviceid = "";
 $devicename   = "";
 $report = "";
-$errors = array(); 
-$db = mysqli_connect('localhost', 'root', '', 'eirpad');
 
 if (isset($_POST['change_device'])){
     $username = $_SESSION['username'];
@@ -216,13 +219,18 @@ if (isset($_POST['reg_user'])){
         }
     }
     if (count($errors) == 0){ 
+        $verified = false;
+        $token = bin2hex(random_bytes(50));
         $hash = password_hash($password1, PASSWORD_BCRYPT);
-        $stmt = $db->prepare("INSERT INTO `users` (`username`, `email`, `password`) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $email, $hash);
+        $stmt = $db->prepare("INSERT INTO `users` (`username`, `email`, `password`, `token`, `verified`) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssb", $username, $email, $hash, $token, $verified);
         $stmt->execute();
         $stmt->close();
         $_SESSION['username'] = $username;
+        $_SESSION['verified'] = $existacc['verified'];
+        sendVerificationEmail($email, $token);
         echo ('success');
+
     }else{
         echo json_encode($regerrors);
     }
@@ -252,6 +260,7 @@ if (isset($_POST['signin_user'])){
             $resultstring = $existacc['password'];
             if(password_verify($password, $resultstring)){
                 $_SESSION['username'] = $username;
+                $_SESSION['verified'] = $existacc['verified'];
                 echo ('success');
             }else{
                 $loginerrors[2] = true;
@@ -277,6 +286,7 @@ function validStrLen($str){
         return FALSE;
     }
 }
+
 function validIdLen($str){
     $len = strlen($str);
     if($len <= 10){

@@ -93,10 +93,10 @@
 						<input class="formfill" type="text" name="devicename" id="devicename" required oninvalid="this.setCustomValidity('You must fill in all fields before submission')" oninput="this.setCustomValidity('')">
 						<label for="devicename">Device name</label>
 					</div>
-					<div class="tooltip" ontouchstart>Need help? (Hold)
+					<div class="tooltip" ontouchstart>Help
 						<span class="tooltiptext">Device IDs are found on the underside of each device. Device IDs are 10 characters long, and are all alphanumeric.<br><br>
 						Choose a 10-character name to help you identify this device. This can be changed later.<br><br>
-						<b>Need assistance?</b> Please contact support at the bottom of this page.</span>
+						<b>Need further assistance?</b> Please use a support form to get in touch.</span>
 					</div>
           			<div class="clearfix"></div>
 					<input type="submit" class="button" name="add_device" id="add_device" value="Add">
@@ -218,11 +218,11 @@
 						<input class="formfill" type="text" name="newname" id="newname" required>
 						<label for="newname">Rename Device</label>
 					</div>
-					<div class="tooltip" ontouchstart>Need help? (Hold)
+					<div class="tooltip" ontouchstart>Help
 						<span class="tooltiptext">You can rename your device here - name length is limited to 10 characters, and cannot be the same as an existing device registered to your account.<br><br>
 						If you turn this device off, you will no longer receive alerts; its data will not be recorded in our servers. <br><br>
 						If you enable notifications, you will receive monitoring alerts for this device. If you enable security mode, you will receive security alerts if anomalous sound is detected.<br><br>
-						<b>Need assistance?</b> Please contact support at the bottom of this page.</span>
+						<b>Need further assistance?</b> Please use a support form to get in touch.</span>
 					</div>
 					<div class="clearfix"></div>
 					<input type="submit" class="button" name="change_device" id="change_device" value="Save changes">
