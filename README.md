@@ -1,5 +1,5 @@
 # eirpad_website
-eirpad home monitoring system - website including description page, login and user management system, allowing users to manage their associated devices and view device information.
+eirpad home monitoring system, device_files has serial output, otherwise this repository encompasses user management, mailing system, webserver stuff
 
 Requires PHPMailer library for email integration:
 
