@@ -310,7 +310,7 @@ if (isset($_POST['reg_user'])){
             $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
             $mail->Username   = 'eirpadcs@gmail.com';                   // SMTP username
-            $mail->Password   = 'eirCSPADWORD';                         // SMTP password
+            $mail->Password   = 'Manor123!';                            // SMTP password
             $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
             $mail->setFrom('eirpadcs@gmail.com', 'eirpad Support');
