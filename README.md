@@ -1,7 +1,5 @@
-### eirpad
-
 ## Under Construction
 
-eirpad home monitoring system, user management, mailing system, webserver etc.
+eirpad is a home monitoring system with user management, mailing & notification system, webserver with realtime data, etc.
 
 Requires PHPMailer
