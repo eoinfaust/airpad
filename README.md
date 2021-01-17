@@ -1,7 +1,7 @@
-# eirpad_website
+### eirpad
 
-eirpad home monitoring system, device_files has serial output, otherwise this repository encompasses user management, mailing system, webserver etc.
+## Under Construction
 
-Requires PHPMailer library for email integration:
+eirpad home monitoring system, user management, mailing system, webserver etc.
 
-`composer require phpmailer/phpmailer`
+Requires PHPMailer
